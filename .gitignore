@@ -4,6 +4,7 @@ build
 node_modules
 stats.json
 credentials
+/client
 
 # Cruft
 .DS_Store

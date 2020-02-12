@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "cross-env NODE_ENV=development node server",
-    "server": "cross-env NODE_ENV=development nodemon --inspect server"
+    "server": "cross-env NODE_ENV=development nodemon --inspect server",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
@@ -21,6 +23,7 @@
   "dependencies": {
     "axios": "^0.19.2",
     "chalk": "^3.0.0",
+    "concurrently": "^5.1.0",
     "cookie-parser": "^1.4.4",
     "cors": "^2.8.5",
     "cross-env": "^7.0.0",
