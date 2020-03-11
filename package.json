@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "cross-env NODE_ENV=development node server",
-    "server": "cross-env NODE_ENV=development nodemon --inspect server",
+    "server": "cross-env NODE_ENV=development nodemon server",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
@@ -32,8 +32,7 @@
     "graphql": "^14.6.0",
     "ip": "^1.1.5",
     "minimist": "^1.2.0",
-    "query-string": "^6.10.1",
-    "request": "^2.88.2"
+    "query-string": "^6.10.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.2"
