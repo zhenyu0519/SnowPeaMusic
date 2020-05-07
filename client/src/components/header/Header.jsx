@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 // import scss
 import "./Header.scss";
 // import link from route
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 // import logo
 import { ReactComponent as Logo } from "../../assets/logo.svg";
+// import util
+import { getAccessToken } from "../../utils/getAccessToken";
 
-export const Header = () => {
+const Header = ({ history }) => {
+  useEffect(() => {
+    const accessToken = getAccessToken();
+    if (accessToken) history.push("/");
+  }, [history]);
   return (
     <div className="header-container">
       <Link to="/" className="logo-container">
@@ -18,3 +24,5 @@ export const Header = () => {
     </div>
   );
 };
+
+export default withRouter(Header);

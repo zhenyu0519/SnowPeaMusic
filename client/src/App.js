@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import { Route, Switch } from "react-router-dom";
 // components
-import { Header } from "./components/header/Header";
+import Header from "./components/header/Header";
 // pages
 import HomePage from "./pages/home-page/HomePage";
 
