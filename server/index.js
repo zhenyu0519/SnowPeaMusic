@@ -7,7 +7,7 @@ const cors = require("cors");
 const querystring = require("querystring");
 const cookieParser = require("cookie-parser");
 // import utils
-const generateRandomString = require('./utils/generateRandomString')
+const generateRandomString = require("./utils/generateRandomString");
 
 // config dotenv
 require("dotenv").config();
@@ -16,15 +16,12 @@ require("dotenv").config();
 const client_id = process.env.CLIENT_ID; // Your client id
 const client_secret = process.env.CLIENT_SECRET; // Your secret
 const redirect_uri = process.env.REDIRECT_URI; // Your redirect uri
-const stateKey = "spotify_auth_state";
+const stateKey = process.env.STATE_KEY
 
 // create server
 const app = express();
 
-app
-  .use(express.static(__dirname + "/public"))
-  .use(cors())
-  .use(cookieParser());
+app.use(cors()).use(cookieParser());
 
 // get login request
 app.get("/login", function (req, res) {
@@ -53,8 +50,9 @@ app.get("/callback", function (req, res) {
   let state = req.query.state || null;
   let storedState = req.cookies ? req.cookies[stateKey] : null;
 
+  // no state
   if (state === null || state !== storedState) {
-    res.redirect("/#" + querystring.stringify({ error: "state_mismatch" }));
+    res.redirect("http://localhost:3000/#" + querystring.stringify({ error: "state_mismatch" }));
   } else {
     res.clearCookie(stateKey);
     // your application requests authorization
@@ -83,12 +81,13 @@ app.get("/callback", function (req, res) {
         })
           .then(() => {
             res.redirect(
-              "/#" + querystring.stringify({ access_token, refresh_token })
+              "http://localhost:3000/#" +
+                querystring.stringify({ access_token, refresh_token })
             );
           })
           .catch((e) => {
             res.redirect(
-              "/#" + querystring.stringify({ error: e.response.data })
+              "http://localhost:3000/#" + querystring.stringify({ error: e.response.data })
             );
           });
       })
@@ -125,5 +124,5 @@ app.get("/refresh_token", function (req, res) {
     });
 });
 
-console.log(`Listening on ${process.env.PORT}`);
+console.log(`Server is Listening on ${process.env.PORT}`);
 app.listen(process.env.PORT);
