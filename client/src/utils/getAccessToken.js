@@ -5,13 +5,11 @@ const getCurrentTime = () => new Date().getTime();
 
 const getWindowURLParsed = () => queryString.parse(window.location.hash);
 
-const setTokenTimestamp = (value) => {
+const setTokenTimestamp = (value) =>
   window.localStorage.setItem("spotify_token_timestamp", value);
-};
 
-const getTokenTimestamp = () => {
+const getTokenTimestamp = () =>
   window.localStorage.getItem("spotify_token_timestamp");
-};
 
 const setLocalAccessToken = (token) => {
   const hourInMS = 24 * 60 * 1000;
@@ -20,22 +18,19 @@ const setLocalAccessToken = (token) => {
   setTokenTimestamp(currentTime);
 };
 
-const getLocalAccessToken = () => {
+const getLocalAccessToken = () =>
   window.localStorage.getItem("spotify_access_token");
-};
 
-const setLocalRefreshToken = (token) => {
+const setLocalRefreshToken = (token) =>
   window.localStorage.setItem("spotify_refresh_token", token);
-};
 
-const getLocalRefreshToken = () => {
+const getLocalRefreshToken = () =>
   window.localStorage.getItem("spotify_refresh_token");
-};
 
 async function refreshAccessToken() {
   try {
     const { data } = await axios.get(
-      `/refresh_token?refresh_token=${getLocalRefreshToken()}`
+      `http://localhost:8000/refresh_token?refresh_token=${getLocalRefreshToken()}`
     );
     const { access_token } = data;
     setLocalAccessToken(access_token);
@@ -50,8 +45,6 @@ export const getAccessToken = () => {
   const timestamp = getTokenTimestamp();
   const currentTime = getCurrentTime();
   const localAccessToken = getLocalAccessToken();
-  console.log('localAccessToken',localAccessToken)
-
   //If ther is access token and refresh time has not been expired
   if (localAccessToken && timestamp - currentTime > 0) {
     return localAccessToken;
@@ -67,7 +60,6 @@ export const getAccessToken = () => {
     const result = getWindowURLParsed();
     if (result.access_token && result.refresh_token) {
       const { access_token, refresh_token } = result;
-      console.log('access_token',access_token)
       setLocalAccessToken(access_token);
       setLocalRefreshToken(refresh_token);
       return access_token;

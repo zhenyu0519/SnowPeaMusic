@@ -10,7 +10,7 @@ import { getAccessToken } from "../../utils/getAccessToken";
 
 const Header = ({ history }) => {
   useEffect(() => {
-    console.log('changed', history)
+    console.log("changed", history);
     const accessToken = getAccessToken();
     if (accessToken) history.push("/");
   }, [history]);
@@ -19,9 +19,6 @@ const Header = ({ history }) => {
       <Link to="/" className="logo-container">
         <Logo className="logo" />
       </Link>
-      <div className="options-container">
-        <a href="http://localhost:8000/login">Login With Spotify</a>
-      </div>
     </div>
   );
 };
