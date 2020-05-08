@@ -16,7 +16,7 @@ require("dotenv").config();
 const client_id = process.env.CLIENT_ID; // Your client id
 const client_secret = process.env.CLIENT_SECRET; // Your secret
 const redirect_uri = process.env.REDIRECT_URI; // Your redirect uri
-const stateKey = process.env.STATE_KEY
+const stateKey = process.env.STATE_KEY;
 
 // create server
 const app = express();
@@ -52,7 +52,10 @@ app.get("/callback", function (req, res) {
 
   // no state
   if (state === null || state !== storedState) {
-    res.redirect("http://localhost:3000/#" + querystring.stringify({ error: "state_mismatch" }));
+    res.redirect(
+      "http://localhost:3000/#" +
+        querystring.stringify({ error: "state_mismatch" })
+    );
   } else {
     res.clearCookie(stateKey);
     // your application requests authorization
@@ -74,24 +77,17 @@ app.get("/callback", function (req, res) {
       .then((response) => {
         const access_token = response.data.access_token;
         const refresh_token = response.data.refresh_token;
-        axios({
-          method: "get",
-          url: "https://api.spotify.com/v1/me",
-          headers: { Authorization: "Bearer " + access_token },
-        })
-          .then(() => {
-            res.redirect(
-              "http://localhost:3000/#" +
-                querystring.stringify({ access_token, refresh_token })
-            );
-          })
-          .catch((e) => {
-            res.redirect(
-              "http://localhost:3000/#" + querystring.stringify({ error: e.response.data })
-            );
-          });
+        res.redirect(
+          "http://localhost:3000/login/#" +
+            querystring.stringify({ access_token, refresh_token })
+        );
       })
-      .catch((e) => console.error(e.response.data));
+      .catch((e) => {
+        res.redirect(
+          "http://localhost:3000/login/#" +
+            querystring.stringify({ error: e.response.data })
+        );
+      });
   }
 });
 

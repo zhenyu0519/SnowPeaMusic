@@ -1,0 +1,50 @@
+.login-button-container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #292929;
+
+    .login-button {
+        height: 150px;
+        width: 150px;
+        border: solid black 8px;
+        border-radius: 45%;
+        background-color: #1db954;
+        color: #f2f2f2;
+        font-family: "Patrick Hand", cursive;
+        font-size: 23px;
+        font-weight: bold;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+
+        .logo {
+            margin-bottom: 5px;
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+        }
+    }
+
+    .login-button:hover {
+        height: 140px;
+        width: 140px;
+        border: solid black 8px;
+        font-size: 22px;
+        background-color: #f2f2f2;
+        color: #292929;
+        cursor: pointer;
+        text-shadow: 1px 1px #1db954;
+
+        .logo {
+            height: 45px;
+            width: 45px;
+            border-radius: 50%;
+            background-color: #1db954;
+        }
+    }
+}

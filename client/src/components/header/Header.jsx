@@ -10,6 +10,7 @@ import { getAccessToken } from "../../utils/getAccessToken";
 
 const Header = ({ history }) => {
   useEffect(() => {
+    console.log('changed', history)
     const accessToken = getAccessToken();
     if (accessToken) history.push("/");
   }, [history]);

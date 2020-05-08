@@ -50,6 +50,7 @@ export const getAccessToken = () => {
   const timestamp = getTokenTimestamp();
   const currentTime = getCurrentTime();
   const localAccessToken = getLocalAccessToken();
+  console.log('localAccessToken',localAccessToken)
 
   //If ther is access token and refresh time has not been expired
   if (localAccessToken && timestamp - currentTime > 0) {
@@ -66,6 +67,7 @@ export const getAccessToken = () => {
     const result = getWindowURLParsed();
     if (result.access_token && result.refresh_token) {
       const { access_token, refresh_token } = result;
+      console.log('access_token',access_token)
       setLocalAccessToken(access_token);
       setLocalRefreshToken(refresh_token);
       return access_token;

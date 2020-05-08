@@ -5,14 +5,14 @@ import { Route, Switch } from "react-router-dom";
 import Header from "./components/header/Header";
 // pages
 import HomePage from "./pages/home-page/HomePage";
-
+import LoginPage from "./pages/login-page/LoginPage";
 const App = () => {
   return (
     <div className="App">
-      <Header />
+      {/* <Header /> */}
       <Switch>
         <Route exact path="/" component={HomePage} />
-        <Route exact path="/login" />
+        <Route exact path="/login" component={LoginPage} />
       </Switch>
     </div>
   );
