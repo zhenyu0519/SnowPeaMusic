@@ -1,13 +1,15 @@
 import React, { Component } from "react";
+import "./HomePage.scss";
 // redux
 import { connect } from "react-redux";
-// util
-import { clearTokens } from "../../utils/getAccessToken";
 // actions
 import { getMyProfile } from "../../redux/get-my-profile/myProfileActions";
 // components
 import { LoadingSpinner } from "../../components/loading-spinner/LoadingSpinner";
 import Header from "../../components/header/Header";
+import LeftContent from "../../components/content/left-content/LeftContent";
+import RightContent from "../../components/content/right-content/RightContent";
+import MainContent from "../../components/content/main-content/MainContent";
 
 class HomePage extends Component {
   state = {
@@ -18,33 +20,32 @@ class HomePage extends Component {
     this.props.getMyProfile();
   }
 
-  static getDerivedStateFromProps(props, state) {
-    if (props.myProfile.loginedUser !== state.myProfile.loginedUser) {
-      return {
-        myProfile: props.myProfile,
-      };
-    }
-    return null;
-  }
-
-  // componentDidUpdate(prevProps, prevState) {
-  //   if (this.state.myProfile === null) {
-  //     this._loadAsyncData(this.props.id);
+  // static getDerivedStateFromProps(props, state) {
+  //   if (props.myProfile.loginedUser !== state.myProfile.loginedUser) {
+  //     return {
+  //       myProfile: props.myProfile,
+  //     };
   //   }
+  //   return null;
   // }
 
-  signOut = () => {
-    clearTokens();
-    window.location.reload();
-  };
+  // // componentDidUpdate(prevProps, prevState) {
+  // //   if (this.state.myProfile === null) {
+  // //     this._loadAsyncData(this.props.id);
+  // //   }
+  // // }
 
   render() {
     return this.props.myProfile.isLoading ? (
       <LoadingSpinner asOverlay />
     ) : (
-      <div>
+      <div className="home-container">
         <Header />
-        <button onClick={this.signOut}>Sign out</button>
+        <div className="content-container">
+          <LeftContent />
+          <MainContent />
+          <RightContent />
+        </div>
       </div>
     );
   }

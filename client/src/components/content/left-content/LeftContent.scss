@@ -1,0 +1,12 @@
+.left-content-container {
+    flex: 25%;
+    height: 100%;
+    background-color: #292929;
+    padding: 10px;
+
+    .directory-container {
+        background-color: yellowgreen;
+        padding: 20px;
+        border: white solid 1px;
+    }
+}
