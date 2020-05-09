@@ -40,7 +40,7 @@ class HomePage extends Component {
       <LoadingSpinner asOverlay />
     ) : (
       <div className="home-container">
-        <Header />
+        <Header loginedUser={this.props.myProfile.loginedUser} />
         <div className="content-container">
           <LeftContent />
           <MainContent />
