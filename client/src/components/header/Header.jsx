@@ -8,6 +8,7 @@ import { ReactComponent as Logo } from "../../assets/logo.svg";
 // import util
 import { getAccessToken, clearTokens } from "../../utils/getAccessToken";
 import { Avatar } from "../avatar/Avatar";
+import { SearchBar } from "../search-bar/SearchBar";
 
 const Header = ({ history, loginedUser }) => {
   useEffect(() => {
@@ -25,8 +26,8 @@ const Header = ({ history, loginedUser }) => {
       <Link to="/" className="logo-container">
         <Logo className="logo" />
       </Link>
-      {console.log(loginedUser)}
       <div className="options-container">
+        <SearchBar displayName={loginedUser.display_name} />
         <Avatar
           imageUrl={loginedUser.images[0].url}
           alt={loginedUser.display_name}

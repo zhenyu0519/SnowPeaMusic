@@ -4,7 +4,7 @@ body {
   background-color: #292929;
 }
 
-button {
+button, input {
   font-family : inherit;
 }
 
