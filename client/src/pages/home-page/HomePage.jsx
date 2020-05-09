@@ -1,5 +1,11 @@
 import React, { Component } from "react";
 import "./HomePage.scss";
+// reselect & seletors
+import { createStructuredSelector } from "reselect";
+import {
+  selectMyProfileLoginedUser,
+  selectMyProfileIsLoading,
+} from "../../redux/get-my-profile/myProfileSelector";
 // redux
 import { connect } from "react-redux";
 // actions
@@ -36,11 +42,11 @@ class HomePage extends Component {
   // // }
 
   render() {
-    return this.props.myProfile.isLoading ? (
+    return this.props.isLoading ? (
       <LoadingSpinner asOverlay />
     ) : (
       <div className="home-container">
-        <Header loginedUser={this.props.myProfile.loginedUser} />
+        <Header loginedUser={this.props.loginedUser} />
         <div className="content-container">
           <LeftContent />
           <MainContent />
@@ -51,8 +57,9 @@ class HomePage extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  myProfile: state.myProfile,
+const mapStateToProps = createStructuredSelector({
+  loginedUser: selectMyProfileLoginedUser,
+  isLoading: selectMyProfileIsLoading,
 });
 
 const mapDispatchToProps = (dispatch) => ({

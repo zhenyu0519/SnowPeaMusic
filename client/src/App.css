@@ -4,8 +4,13 @@ body {
   background-color: #292929;
 }
 
-button, input {
-  font-family : inherit;
+button,
+input {
+  font-family: inherit;
+}
+
+::placeholder {
+  color: #e6e6e6;
 }
 
 a {

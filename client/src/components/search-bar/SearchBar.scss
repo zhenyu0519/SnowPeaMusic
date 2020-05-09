@@ -6,8 +6,17 @@
     letter-spacing: 2px;
     font-weight: bold;
     text-align: center;
+    background-color: #292929;
 }
 
 .search-bar:focus {
     outline: none;
+    background-color: #1db954;
+    border-color: #1db954;
+    caret-color: #e6e6e6;
+}
+
+.search-bar:hover {
+    background-color: #1db954;
+    border-color: #1db954;
 }
