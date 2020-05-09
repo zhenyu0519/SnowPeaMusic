@@ -8,7 +8,7 @@ import { ReactComponent as Logo } from "../../assets/logo.svg";
 // import util
 import { getAccessToken, clearTokens } from "../../utils/getAccessToken";
 import { Avatar } from "../avatar/Avatar";
-import { SearchBar } from "../search-bar/SearchBar";
+import SearchBar from "../search-bar/SearchBar";
 
 const Header = ({ history, loginedUser }) => {
   useEffect(() => {

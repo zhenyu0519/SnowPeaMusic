@@ -5,7 +5,7 @@ import { createStructuredSelector } from "reselect";
 import {
   selectMyProfileLoginedUser,
   selectMyProfileIsLoading,
-} from "../../redux/get-my-profile/myProfileSelector";
+} from "../../redux/get-my-profile/myProfileSelectors";
 // redux
 import { connect } from "react-redux";
 // actions
