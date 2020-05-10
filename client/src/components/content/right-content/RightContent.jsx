@@ -1,4 +1,4 @@
-import React,{useEffect} from "react";
+import React, { useEffect } from "react";
 import "./RightContent.scss";
 // redux & actions
 import { connect } from "react-redux";
@@ -12,6 +12,7 @@ import {
 // components
 import { Title } from "../../title/Title";
 import { LoadingSpinner } from "../../loading-spinner/LoadingSpinner";
+import { TrackCard } from "../../track-card/TrackCard";
 
 const RightContent = ({
   isLoading,
@@ -26,7 +27,18 @@ const RightContent = ({
   ) : (
     <div className="right-content-container">
       <Title title="Recent Played" />
-      {console.log(recentPlayedTracks)}
+      <div className="history-container">
+        {recentPlayedTracks.map((item, index) => (
+          <TrackCard
+            key={index}
+            album={item.track.album}
+            artists={item.track.artists}
+            name={item.track.name}
+            id={item.track.id}
+          />
+        ))}
+      </div>
+      {/* {console.log(recentPlayedTracks)} */}
     </div>
   );
 };

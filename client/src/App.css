@@ -2,6 +2,7 @@ body {
   font-family: "Patrick Hand", cursive;
   padding: 10px 20px;
   background-color: #292929;
+  overflow: hidden
 }
 
 button,

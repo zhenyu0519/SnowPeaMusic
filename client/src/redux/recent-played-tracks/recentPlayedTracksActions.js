@@ -18,7 +18,7 @@ const getRecentPlayedTracksFailed = (err) => ({
 export const getRecentPlayedTracks = () => (dispatch) => {
   dispatch(getRecentPlayedTracksStart());
   sendRequest
-    .get("me/player/recently-played?limit=15")
+    .get("me/player/recently-played?limit=10")
     .then((res) => {
       dispatch(getRecentPlayedTracksSuccess(res.data));
     })

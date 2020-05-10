@@ -1,5 +1,4 @@
 import { createSelector } from "reselect";
-import { searchItemsTypes } from "./searchItemsTypes";
 
 const selectSearchItems = (state) => state.searchItems;
 
