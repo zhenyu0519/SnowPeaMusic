@@ -4,10 +4,12 @@ const selectMyProfile = (state) => state.myProfile;
 
 export const selectMyProfileIsLoading = createSelector(
   [selectMyProfile],
-  (myProfile) => myProfile.isLoading
+  (payload) => payload.isLoading
 );
 
 export const selectMyProfileLoginedUser = createSelector(
   [selectMyProfile],
-  (myProfile) => myProfile.loginedUser
+  (payload) => {
+    return payload.loginedUser;
+  }
 );

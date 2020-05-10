@@ -7,12 +7,14 @@ import { getSearchItems } from "../../redux/search-for-items/searchItemsActions"
 // reselect & selectors
 import { createStructuredSelector } from "reselect";
 import {
-  selectSearchItemsList,
+  selectSearchItemsArtists,
+  selectSearchItemsTracks,
   selectSearchItemsIsLoading,
 } from "../../redux/search-for-items/searchItemsSelectors";
 const SearchBar = ({
   displayName,
-  searchItemsList,
+  searchItemsArtists,
+  selectItemsTracks,
   searchItemsIsLoading,
   getSearchItems,
 }) => {
@@ -40,7 +42,8 @@ const SearchBar = ({
 };
 
 const mapStateToProps = createStructuredSelector({
-  searchItemsList: selectSearchItemsList,
+  searchItemsArtists: selectSearchItemsArtists,
+  selectItemsTracks: selectSearchItemsTracks,
   searchItemsIsLoading: selectSearchItemsIsLoading,
 });
 

@@ -1,13 +1,23 @@
 import { createSelector } from "reselect";
+import { searchItemsTypes } from "./searchItemsTypes";
 
 const selectSearchItems = (state) => state.searchItems;
 
-export const selectSearchItemsList = createSelector(
+export const selectSearchItemsArtists = createSelector(
   [selectSearchItems],
-  (searchItems) => searchItems.searchedItems
+  (payload) => {
+    return payload.searchedItems.artists;
+  }
+);
+
+export const selectSearchItemsTracks = createSelector(
+  [selectSearchItems],
+  (payload) => {
+    return payload.searchedItems.tracks;
+  }
 );
 
 export const selectSearchItemsIsLoading = createSelector(
   [selectSearchItems],
-  (searchItems) => searchItems.isLoading
+  (payload) => payload.isLoading
 );
