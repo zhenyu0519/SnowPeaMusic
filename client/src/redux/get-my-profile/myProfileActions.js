@@ -15,10 +15,10 @@ export const getMyProfileFailed = (error) => ({
   payload: error,
 });
 
-export const getMyProfile = () => async (dispatch) => {
+export const getMyProfile = () => (dispatch) => {
   dispatch(getMyProfileStart());
   sendRequest
-    .get(`me`)
+    .get("me")
     .then((res) => {
       dispatch(getMyProfileSuccess(res.data));
     })

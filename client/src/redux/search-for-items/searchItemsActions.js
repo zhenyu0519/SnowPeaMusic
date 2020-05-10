@@ -15,7 +15,7 @@ export const getSearchItemsFailed = (error) => ({
   payload: error,
 });
 
-export const getSearchItems = (query) => async (dispatch) => {
+export const getSearchItems = (query) => (dispatch) => {
   dispatch(getSearchItemsStart());
   sendRequest
     .get(`search?q=${query}&type=track%2Cartist&market=CA&limit=15`)
