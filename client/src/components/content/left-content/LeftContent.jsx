@@ -5,9 +5,13 @@ import NewReleased from "../../new-releases/NewReleased";
 import FeaturedPlaylist from "../../featured-playlist/FeaturedPlaylist";
 // components
 import { Title } from "../../title/Title";
+// font awesome
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowAltCircleUp } from "@fortawesome/free-regular-svg-icons";
+import { faArrowAltCircleDown } from "@fortawesome/free-regular-svg-icons";
 
 const LeftContent = () => {
-  const [isMyPlaylistOpen, setMyPlaylistOpen] = useState(false);
+  const [isMyPlaylistOpen, setMyPlaylistOpen] = useState(true);
   const [isNewReleasedOpen, setNewReleasedOpen] = useState(false);
   const [isFeaturedListOpen, setFeaturedListOpen] = useState(false);
 
@@ -31,7 +35,7 @@ const LeftContent = () => {
       setMyPlaylistOpen(false);
     }
   }, [isFeaturedListOpen]);
-  
+
   return (
     <div className="left-content-container">
       <Title title="Browse" />
@@ -41,18 +45,51 @@ const LeftContent = () => {
           onClick={() => setMyPlaylistOpen(!isMyPlaylistOpen)}
         >
           My Playlists
+          {isMyPlaylistOpen ? (
+            <FontAwesomeIcon
+              className="menu-icon-down"
+              icon={faArrowAltCircleDown}
+            />
+          ) : (
+            <FontAwesomeIcon
+              className="menu-icon-up"
+              icon={faArrowAltCircleUp}
+            />
+          )}
         </button>
         <button
           className="new-released-button"
           onClick={() => setNewReleasedOpen(!isNewReleasedOpen)}
         >
           New Released
+          {isNewReleasedOpen ? (
+            <FontAwesomeIcon
+              className="menu-icon-down"
+              icon={faArrowAltCircleDown}
+            />
+          ) : (
+            <FontAwesomeIcon
+              className="menu-icon-up"
+              icon={faArrowAltCircleUp}
+            />
+          )}
         </button>
         <button
           className="new-featured-playlist-button"
           onClick={() => setFeaturedListOpen(!isFeaturedListOpen)}
         >
           Editor's Pick
+          {isFeaturedListOpen ? (
+            <FontAwesomeIcon
+              className="menu-icon-down"
+              icon={faArrowAltCircleDown}
+            />
+          ) : (
+            <FontAwesomeIcon
+              className="menu-icon-up"
+              icon={faArrowAltCircleUp}
+            />
+          )}
         </button>
       </div>
       <div className="browse-container">

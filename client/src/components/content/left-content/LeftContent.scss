@@ -25,11 +25,31 @@
             font-weight: bold;
             letter-spacing: 3px;
             border-bottom: solid 2px #292929;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .menu-icon-down {
+                color: #1db954;
+            }
+
+            .menu-icon-up {
+                color: #e6e6e6;
+            }
+        }
+
+        button:hover {
+            background-color: #1db954;
+            color: #292929;
+
+            .menu-icon-down {
+                color: #292929;
+            }
         }
 
         button:last-child {
             border-bottom: none;
-            height: 25px;
+            height: 20px;
         }
     }
 
