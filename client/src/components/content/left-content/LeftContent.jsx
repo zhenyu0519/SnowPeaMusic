@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./LeftContent.scss";
 import MyPlaylists from "../../my-playlist/MyPlaylists";
 import NewReleased from "../../new-releases/NewReleased";
@@ -10,6 +10,28 @@ const LeftContent = () => {
   const [isMyPlaylistOpen, setMyPlaylistOpen] = useState(false);
   const [isNewReleasedOpen, setNewReleasedOpen] = useState(false);
   const [isFeaturedListOpen, setFeaturedListOpen] = useState(false);
+
+  useEffect(() => {
+    if (isMyPlaylistOpen) {
+      setNewReleasedOpen(false);
+      setFeaturedListOpen(false);
+    }
+  }, [isMyPlaylistOpen]);
+
+  useEffect(() => {
+    if (isNewReleasedOpen) {
+      setMyPlaylistOpen(false);
+      setFeaturedListOpen(false);
+    }
+  }, [isNewReleasedOpen]);
+
+  useEffect(() => {
+    if (isFeaturedListOpen) {
+      setNewReleasedOpen(false);
+      setMyPlaylistOpen(false);
+    }
+  }, [isFeaturedListOpen]);
+  
   return (
     <div className="left-content-container">
       <Title title="Browse" />
