@@ -22,6 +22,7 @@ const MyPlaylists = ({ isLoading, myPlaylists, getMyPlaylists, open }) => {
   }, [open, getMyPlaylists]);
   return (
     <div className="my-playlists-container">
+      {console.log("open", open, "isLoading", isLoading)}
       {open && !isLoading ? (
         <div className="my-playlists">
           {myPlaylists.map((playlist) => (
@@ -33,6 +34,8 @@ const MyPlaylists = ({ isLoading, myPlaylists, getMyPlaylists, open }) => {
             />
           ))}
         </div>
+      ) : open && isLoading ? (
+        <LoadingSpinner />
       ) : null}
     </div>
   );
