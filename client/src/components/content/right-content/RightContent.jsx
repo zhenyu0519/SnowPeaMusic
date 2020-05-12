@@ -38,7 +38,6 @@ const RightContent = ({
           />
         ))}
       </div>
-      {/* {console.log(recentPlayedTracks)} */}
     </div>
   );
 };
