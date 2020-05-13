@@ -23,7 +23,7 @@ const RightContent = ({
     getRecentPlayedTracks();
   }, [getRecentPlayedTracks]);
   return isLoading ? (
-    <LoadingSpinner />
+    <LoadingSpinner asOverlay />
   ) : (
     <div className="right-content-container">
       <Title title="Recent Played" />
