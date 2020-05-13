@@ -1,11 +1,12 @@
 .main-content-container {
     flex: 65%;
     background-color: #292929;
-    padding: 10px;
+    padding: 5px;
 
     .player-container {
-        background-color: yellowgreen;
-        padding: 20px;
+        height: 500px;
+        width: 100%;
+        overflow: scroll;
         border: white solid 1px;
     }
 }

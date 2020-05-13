@@ -38,7 +38,7 @@ const LeftContent = () => {
 
   return (
     <div className="left-content-container">
-      <Title title="Browse" />
+      <Title title="Browse Playlists" />
       <div className="button-group">
         <button
           className="my-playlists-button"

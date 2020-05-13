@@ -2,15 +2,19 @@ import React, { Component } from "react";
 import "./MainContent.scss";
 // utils
 import { getAccessToken } from "../../../utils/getAccessToken";
-
+// components
+import { Title } from "../../title/Title";
+import { Player } from "../../player/Player";
 class MainContent extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
       token: getAccessToken(),
       deviceId: "",
       player: null,
+      currentTrack: null,
+      previousTracks: [],
+      nextTracks: [],
     };
     this.playerCheckInterval = null;
   }
@@ -67,8 +71,17 @@ class MainContent extends Component {
 
     // Playback status updates
     player.on("player_state_changed", (state) => {
+      this.setState({
+        currentTrack: state.track_window.current_track,
+        previousTrack: state.track_window.previous_tracks,
+        nextTracks: state.track_window.next_tracks,
+      });
       console.log(state);
     });
+
+    // const playNextTracks = ()=>{
+    //   player.nextTrack()
+    // }
 
     // Ready
     player.on("ready", (data) => {
@@ -78,9 +91,21 @@ class MainContent extends Component {
   }
 
   render() {
+    const { currentTrack, previousTracks, nextTracks, player } = this.state;
     return (
       <div className="main-content-container">
-        <div className="player-container">player</div>
+        <Title title="current playing..." />
+        <div className="player-container">
+          {console.log("currentTrack", currentTrack)}
+          {currentTrack ? (
+            <Player
+              imageUrl={currentTrack.album.images[0].url}
+              albumName={currentTrack.album.name}
+              trackName={currentTrack.name}
+              artists={currentTrack.artists}
+            />
+          ) : null}
+        </div>
       </div>
     );
   }
