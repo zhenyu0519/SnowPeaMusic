@@ -25,6 +25,8 @@ class HomePage extends Component {
     this.state = {
       myProfile: this.props.myProfile,
       token: getAccessToken(),
+      deviceId: "",
+      player: null,
     };
     this.playerCheckInterval = null;
   }
@@ -42,35 +44,58 @@ class HomePage extends Component {
     const { token } = this.state;
     if (window.Spotify !== null) {
       clearInterval(this.playerCheckInterval);
-      this.player = new window.Spotify.Player({
-        name: "Jeffrey's Spotify Player",
-        getOAuthToken: (cb) => {
-          cb(token);
-        },
+      // The main constructor for initializing the Web Playback SDK.
+      // It should contain an object with the player name, volume and access token.
+      this.setState({
+        player: new window.Spotify.Player({
+          name: "Jeffrey's Spotify Player",
+          getOAuthToken: (callback) => {
+            callback(token);
+          },
+          volume: 0.5,
+        }),
       });
       this.createEventHandlers();
 
       // finally, connect!
-      this.player.connect();
+      // Connect to Web Playback SDK instance to Spotify with the credentials provided during initialization.
+      this.state.player.connect().then((success) => {
+        if (success) {
+          console.log(
+            "The Web Playback SDK successfully connected to Spotify!"
+          );
+        }
+      });
+      console.log("something here", this.state.player);
     }
   }
 
   createEventHandlers() {
-    this.player.on('initialization_error', e => { console.error(e); });
-    this.player.on('authentication_error', e => {
+    const { player } = this.state;
+    // Create a new event listener in the Web Playback SDK.
+    player.on("initialization_error", (e) => {
       console.error(e);
-      this.setState({ loggedIn: false });
     });
-    this.player.on('account_error', e => { console.error(e); });
-    this.player.on('playback_error', e => { console.error(e); });
-  
+    // player.on("authentication_error", (e) => {
+    //   console.error(e);
+    //   this.setState({ loggedIn: false });
+    // });
+    player.on("account_error", (e) => {
+      console.error(e);
+    });
+    player.on("playback_error", (e) => {
+      console.error(e);
+    });
+
     // Playback status updates
-    this.player.on('player_state_changed', state => { console.log(state); });
-  
+    player.on("player_state_changed", (state) => {
+      console.log(state);
+    });
+
     // Ready
-    this.player.on('ready', data => {
+    player.on("ready", (data) => {
       let { device_id } = data;
-      console.log("Let the music play on!");
+      console.log("Let the music play on!", this);
       this.setState({ deviceId: device_id });
     });
   }
