@@ -6,6 +6,8 @@ import { recentPlayedTracksReducer } from "./recent-played-tracks/recentPlayedTr
 import { myPlaylistsReducer } from "./my-playlist/myPlaylistsReducers";
 import { newReleasedTracksReducer } from "./new-releases/newReleasedTracksReducers";
 import { featuredPlaylistReducer } from "./featured-playlist/featuredPlaylistReducers";
+import { currentPlayingReducer } from "./current-playing/currentPlayingReducers";
+import { transferUserPlaybackReducer } from "./transfer-user-playback/transferUserPlaybackReducers";
 
 export const rootReducer = combineReducers({
   myProfile: myProfileReducer,
@@ -14,4 +16,6 @@ export const rootReducer = combineReducers({
   myPlaylists: myPlaylistsReducer,
   newReleasedTracks: newReleasedTracksReducer,
   featuredPlaylist: featuredPlaylistReducer,
+  currentPlaying: currentPlayingReducer,
+  transferUserPlayback: transferUserPlaybackReducer,
 });

@@ -4,7 +4,6 @@ import "./Player.scss";
 export const Player = ({ imageUrl, albumName, trackName, artists }) => {
   return (
     <div className="current-track-container">
-      {console.log(albumName)}
       <img src={imageUrl} alt={albumName} />
       <div className="track-info">
         <div className="album-name">{albumName}</div>

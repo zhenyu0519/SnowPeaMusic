@@ -1,5 +1,14 @@
 import React, { Component } from "react";
 import "./MainContent.scss";
+// redux & actions
+import { connect } from "react-redux";
+import { transferUserPlayback } from "../../../redux/transfer-user-playback/transferUserPlaybackActions";
+// reselect & selecotrs
+import { createStructuredSelector } from "reselect";
+import {
+  selectTransferUserPlaybackTransfered,
+  selectTransferUserPlaybackIsLoading,
+} from "../../../redux/transfer-user-playback/transferUserPlaybackSelectors";
 // utils
 import { getAccessToken } from "../../../utils/getAccessToken";
 // components
@@ -15,8 +24,6 @@ class MainContent extends Component {
       deviceId: "",
       player: null,
       currentTrack: null,
-      previousTracks: [],
-      nextTracks: [],
     };
     this.playerCheckInterval = null;
   }
@@ -40,7 +47,6 @@ class MainContent extends Component {
           getOAuthToken: (callback) => {
             callback(token);
           },
-          volume: 0.5,
         }),
       });
       this.createEventHandlers();
@@ -73,46 +79,49 @@ class MainContent extends Component {
 
     // Playback status updates
     player.on("player_state_changed", (state) => {
+      console.log("state is ", state);
       this.setState({
         currentTrack: state.track_window.current_track,
         previousTrack: state.track_window.previous_tracks,
         nextTracks: state.track_window.next_tracks,
       });
-      console.log(state);
     });
-
-    // const playNextTracks = ()=>{
-    //   player.nextTrack()
-    // }
 
     // Ready
     player.on("ready", (data) => {
       let { device_id } = data;
+      this.props.transferUserPlayback(device_id);
       this.setState({ deviceId: device_id });
     });
   }
 
   render() {
-    const { currentTrack, previousTracks, nextTracks, player } = this.state;
+    const { currentTrack, player } = this.state;
     return (
       <div className="main-content-container">
         <Title title="current playing..." />
         <div className="player-container">
-          {console.log("currentTrack", currentTrack)}
           {currentTrack ? (
             <Player
               imageUrl={currentTrack.album.images[0].url}
               albumName={currentTrack.album.name}
               trackName={currentTrack.name}
               artists={currentTrack.artists}
-              player={player}
             />
           ) : null}
         </div>
-        <PlayerControl />
+        {player ? <PlayerControl player={player} /> : null}
       </div>
     );
   }
 }
 
-export default MainContent;
+const mapStateToProps = createStructuredSelector({
+  isTransfering: selectTransferUserPlaybackIsLoading,
+  isTransfered: selectTransferUserPlaybackTransfered,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  transferUserPlayback: (deviceId) => dispatch(transferUserPlayback(deviceId)),
+});
+export default connect(mapStateToProps, mapDispatchToProps)(MainContent);

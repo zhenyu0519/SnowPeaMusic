@@ -1,16 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import "./PlayerControl.scss";
 // font awesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import { faPause } from "@fortawesome/free-solid-svg-icons";
-import { faStop } from "@fortawesome/free-solid-svg-icons";
 import { faStepForward } from "@fortawesome/free-solid-svg-icons";
 import { faStepBackward } from "@fortawesome/free-solid-svg-icons";
 import { faVolumeUp } from "@fortawesome/free-solid-svg-icons";
 import { faVolumeMute } from "@fortawesome/free-solid-svg-icons";
 
 export const PlayerControl = ({ player }) => {
+  const [isplaying, setisplaying] = useState(false);
+  const onTogglePlayClick = () => {
+    setisplaying(!isplaying);
+    return player.togglePlay();
+  };
+  const onPrevTrackClick = () => player.previousTrack();
+  const onNextTrackClick = () => player.nextTrack();
   return (
     <div className="player-control-group">
       <div className="player-progress-group">
@@ -18,17 +24,7 @@ export const PlayerControl = ({ player }) => {
         <div className="player-progress-bar"></div>
       </div>
       <div className="player-button-group">
-        {/* <button className="stop-button">
-          <FontAwesomeIcon className="player-button-icon" icon={faStop} />
-        </button> */}
-        <button
-          className="pre-button"
-          onClick={() =>
-            player.previousTrack().then(() => {
-              console.log("Set to previous track!");
-            })
-          }
-        >
+        <button className="pre-button" onClick={() => onPrevTrackClick()}>
           <FontAwesomeIcon
             className="player-button-icon"
             icon={faStepBackward}
@@ -36,22 +32,14 @@ export const PlayerControl = ({ player }) => {
         </button>
         <button
           className="play-and-pause-button"
-          onClick={() =>
-            player.togglePlay().then(() => {
-              console.log("Toggled playback!");
-            })
-          }
+          onClick={() => onTogglePlayClick()}
         >
-          <FontAwesomeIcon className="player-button-icon" icon={faPlay} />
+          <FontAwesomeIcon
+            className="player-button-icon"
+            icon={isplaying ? faPlay : faPause}
+          />
         </button>
-        <button
-          className="next-button"
-          onClick={() =>
-            player.nextTrack().then(() => {
-              console.log("Skipped to next track!");
-            })
-          }
-        >
+        <button className="next-button" onClick={() => onNextTrackClick()}>
           <FontAwesomeIcon
             className="player-button-icon"
             icon={faStepForward}
