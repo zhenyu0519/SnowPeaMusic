@@ -105,6 +105,7 @@ class MainContent extends Component {
               albumName={currentTrack.album.name}
               trackName={currentTrack.name}
               artists={currentTrack.artists}
+              player={player}
             />
           ) : null}
         </div>

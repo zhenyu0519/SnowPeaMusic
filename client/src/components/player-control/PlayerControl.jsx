@@ -10,7 +10,7 @@ import { faStepBackward } from "@fortawesome/free-solid-svg-icons";
 import { faVolumeUp } from "@fortawesome/free-solid-svg-icons";
 import { faVolumeMute } from "@fortawesome/free-solid-svg-icons";
 
-export const PlayerControl = () => {
+export const PlayerControl = ({ player }) => {
   return (
     <div className="player-control-group">
       <div className="player-progress-group">
@@ -18,19 +18,40 @@ export const PlayerControl = () => {
         <div className="player-progress-bar"></div>
       </div>
       <div className="player-button-group">
-        <button className="play-and-pause-button">
-          <FontAwesomeIcon className="player-button-icon" icon={faPlay} />
-        </button>
-        <button className="stop-button">
+        {/* <button className="stop-button">
           <FontAwesomeIcon className="player-button-icon" icon={faStop} />
-        </button>
-        <button className="pre-button">
+        </button> */}
+        <button
+          className="pre-button"
+          onClick={() =>
+            player.previousTrack().then(() => {
+              console.log("Set to previous track!");
+            })
+          }
+        >
           <FontAwesomeIcon
             className="player-button-icon"
             icon={faStepBackward}
           />
         </button>
-        <button className="next-button">
+        <button
+          className="play-and-pause-button"
+          onClick={() =>
+            player.togglePlay().then(() => {
+              console.log("Toggled playback!");
+            })
+          }
+        >
+          <FontAwesomeIcon className="player-button-icon" icon={faPlay} />
+        </button>
+        <button
+          className="next-button"
+          onClick={() =>
+            player.nextTrack().then(() => {
+              console.log("Skipped to next track!");
+            })
+          }
+        >
           <FontAwesomeIcon
             className="player-button-icon"
             icon={faStepForward}
