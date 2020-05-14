@@ -5,6 +5,8 @@ import { getAccessToken } from "../../../utils/getAccessToken";
 // components
 import { Title } from "../../title/Title";
 import { Player } from "../../player/Player";
+import { PlayerControl } from "../../player-control/PlayerControl";
+
 class MainContent extends Component {
   constructor(props) {
     super(props);
@@ -106,6 +108,7 @@ class MainContent extends Component {
             />
           ) : null}
         </div>
+        <PlayerControl />
       </div>
     );
   }
