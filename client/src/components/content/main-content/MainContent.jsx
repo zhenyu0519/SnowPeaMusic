@@ -24,6 +24,8 @@ class MainContent extends Component {
       deviceId: "",
       player: null,
       currentTrack: null,
+      duration: 0,
+      position: 0,
     };
     this.playerCheckInterval = null;
   }
@@ -43,7 +45,7 @@ class MainContent extends Component {
       // It should contain an object with the player name, volume and access token.
       this.setState({
         player: new window.Spotify.Player({
-          name: "Jeffrey's Spotify Player",
+          name: "Jeffrey's Spotify Web Player",
           getOAuthToken: (callback) => {
             callback(token);
           },
@@ -79,8 +81,10 @@ class MainContent extends Component {
 
     // Playback status updates
     player.on("player_state_changed", (state) => {
-      console.log("state is ", state);
+      // console.log("state, ", state);
       this.setState({
+        duration: state.duration,
+        position: state.position,
         currentTrack: state.track_window.current_track,
         previousTrack: state.track_window.previous_tracks,
         nextTracks: state.track_window.next_tracks,
@@ -95,8 +99,17 @@ class MainContent extends Component {
     });
   }
 
+  // moveProgressBar = ()=>{
+
+  // }
+
+  // disconnect player after unmount
+  componentWillUnmount() {
+    this.state.player.disconnect();
+  }
+
   render() {
-    const { currentTrack, player } = this.state;
+    const { currentTrack, player, duration, position } = this.state;
     return (
       <div className="main-content-container">
         <Title title="current playing..." />
@@ -110,7 +123,14 @@ class MainContent extends Component {
             />
           ) : null}
         </div>
-        {player ? <PlayerControl player={player} /> : null}
+        {player ? (
+          <PlayerControl
+            player={player}
+            currentTrack={currentTrack}
+            position={position}
+            duration={duration}
+          />
+        ) : null}
       </div>
     );
   }
