@@ -23,34 +23,45 @@ export const PlayerControl = ({ player, currentTrack, position, duration }) => {
   useEffect(() => {
     if (!isplaying) return;
     const progress = setInterval(() => {
-      setCurrentPosition(currentPosition + 1000);
-    }, 1000);
+      setCurrentPosition(currentPosition + 500);
+    }, 500);
     return () => clearInterval(progress);
   }, [isplaying, currentPosition]);
 
   useEffect(() => {
-    if (position & duration) {
-      setCurrentPosition(position);
-    }
+    setCurrentPosition(position);
   }, [position, duration]);
 
-  const getWidth = () => {
-    return ((currentPosition / duration) * 100).toFixed(2) + "%";
+  const getPosition = () => {
+    return currentPosition.toString();
+  };
+
+  const dragTheBar = (event) => {
+    let newPosition = parseInt(event.target.value);
+    player.seek(newPosition).then(() => {
+      console.log("Changed position!");
+    });
+    setCurrentPosition(newPosition);
+  };
+
+  const getRatio = () => {
+    return ((currentPosition / duration) * 100).toFixed(1);
   };
 
   return (
     <div className="player-control-container">
-      <div className="player-progress-group">
-        <div
-          className="player-progress-point"
-          style={{ left: getWidth() }}
-        ></div>
-        <div
-          className="player-progress-bar"
-          style={{ width: getWidth() }}
-        ></div>
-      </div>
-
+      {console.log("currentPosition", currentPosition)}
+      <input
+        className="draggable-progress-bar"
+        type="range"
+        value={getPosition()}
+        min="0"
+        max={duration.toString()}
+        onChange={(event) => dragTheBar(event)}
+        style={{
+          background: `linear-gradient(to right, #e6e6e6 0%, #1db954 ${getRatio()}%, #e6e6e6  ${getRatio()}%, #e6e6e6 100%)`,
+        }}
+      />
       <div className="player-button-group">
         <button className="pre-button" onClick={() => onPrevTrackClick()}>
           <FontAwesomeIcon
