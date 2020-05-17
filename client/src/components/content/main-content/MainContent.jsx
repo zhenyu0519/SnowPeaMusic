@@ -49,6 +49,7 @@ class MainContent extends Component {
           getOAuthToken: (callback) => {
             callback(token);
           },
+          volume: 0.5,
         }),
       });
       this.createEventHandlers();
@@ -81,7 +82,6 @@ class MainContent extends Component {
 
     // Playback status updates
     player.on("player_state_changed", (state) => {
-      // console.log("state, ", state);
       this.setState({
         duration: state.duration,
         position: state.position,
