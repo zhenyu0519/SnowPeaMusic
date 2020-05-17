@@ -13,8 +13,8 @@ export const PlayerControl = ({ player, currentTrack, position, duration }) => {
   const [isplaying, setisplaying] = useState(false);
   const [currentPosition, setCurrentPosition] = useState(position);
   const [isMuted, setMuted] = useState(false);
-  const [volume, setVolume] = useState(0);
-  const [preVolume, setPreVolume] = useState(0.5);
+  const [volume, setVolume] = useState("50");
+  const [preVolume, setPreVolume] = useState("50");
 
   // play or pause the track
   const onTogglePlayClick = () => {
@@ -26,17 +26,14 @@ export const PlayerControl = ({ player, currentTrack, position, duration }) => {
   // next track
   const onNextTrackClick = () => player.nextTrack();
   // mute the track
-  const muteTrack = () => {
-    player.getVolume().then((volume) => {
-      setPreVolume(volume);
-    });
+  const toggleMuted = () => {
+    setPreVolume(volume);
     if (!isMuted) {
       player.setVolume(0);
-      setMuted(true);
     } else {
-      player.setVolume(preVolume);
-      setMuted(false);
+      player.setVolume(parseInt(preVolume) / 100);
     }
+    setMuted(!isMuted);
   };
 
   // player thumb will update the current position every 0.5 seconds
@@ -58,11 +55,21 @@ export const PlayerControl = ({ player, currentTrack, position, duration }) => {
     return currentPosition.toString();
   };
 
-  // drag to the expected positon of track
-  const dragTheBar = (event) => {
+  // drag to adjust positon of track
+  const dragTheProgressBar = (event) => {
     let newPosition = parseInt(event.target.value);
     player.seek(newPosition);
     setCurrentPosition(newPosition);
+  };
+
+  // drag to adjust volume
+  const dragTheVolumeBar = (event) => {
+    let newVolume = parseInt(event.target.value);
+    if (newVolume === 0) {
+      setMuted(true);
+    }
+    setVolume(newVolume);
+    player.setVolume(newVolume / 100);
   };
 
   // to calculation the width ratio of the played parts of the track, this is used to display the position of the thumb and runned track
@@ -78,7 +85,7 @@ export const PlayerControl = ({ player, currentTrack, position, duration }) => {
         value={getPosition()}
         min="0"
         max={duration.toString()}
-        onChange={(event) => dragTheBar(event)}
+        onChange={(event) => dragTheProgressBar(event)}
         style={{
           background: `linear-gradient(to right, #e6e6e6 0%, #1db954 ${getRatio()}%, #e6e6e6  ${getRatio()}%, #e6e6e6 100%)`,
         }}
@@ -105,16 +112,57 @@ export const PlayerControl = ({ player, currentTrack, position, duration }) => {
             icon={faStepForward}
           />
         </button>
-        <button className="volume-button">
-          <FontAwesomeIcon className="player-button-icon" icon={faVolumeUp} />
-        </button>
-        <button className="mute-button">
-          <FontAwesomeIcon
-            className="player-button-icon"
-            icon={faVolumeMute}
-            onClick={() => muteTrack()}
-          />
-        </button>
+        <div className="volume-group">
+          {!isMuted ? (
+            <React.Fragment>
+              <button
+                className="unmuted-button"
+                onClick={(event) => toggleMuted(event)}
+              >
+                <FontAwesomeIcon
+                  className="player-button-icon"
+                  icon={faVolumeUp}
+                />
+              </button>
+              <input
+                className="volume-bar"
+                type="range"
+                value={volume}
+                min="0"
+                max="100"
+                onChange={(event) => dragTheVolumeBar(event)}
+                style={{
+                  background: `linear-gradient(to right, #e6e6e6 0%, #1db954 ${volume}%, #e6e6e6  ${volume}%, #e6e6e6 100%)`,
+                }}
+              />
+            </React.Fragment>
+          ) : (
+            <React.Fragment>
+              <button
+                className="muted-button"
+                onClick={(event) => toggleMuted(event)}
+              >
+                <FontAwesomeIcon
+                  className="player-button-icon"
+                  icon={faVolumeMute}
+                />
+              </button>
+              <input
+                className="volume-bar"
+                type="range"
+                value={volume}
+                min="0"
+                max="100"
+                disabled
+                onChange={(event) => dragTheVolumeBar(event)}
+                style={{
+                  background: `linear-gradient(to right, #e6e6e6 0%, #e6e6e6 ${volume}%, #e6e6e6  ${volume}%, #e6e6e6 100%)`,
+                  visibility: "hidden",
+                }}
+              />
+            </React.Fragment>
+          )}
+        </div>
       </div>
     </div>
   );

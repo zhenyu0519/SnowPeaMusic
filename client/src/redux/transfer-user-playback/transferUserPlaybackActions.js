@@ -15,7 +15,6 @@ const transferUserPlaybackFailed = (err) => ({
 });
 
 export const transferUserPlayback = (deviceId) => (dispatch) => {
-  console.log(deviceId)
   dispatch(transferUserPlaybackStart());
   sendRequest
     .put("me/player", { device_ids: [deviceId], play: false })

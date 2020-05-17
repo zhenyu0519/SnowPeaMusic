@@ -27,37 +27,44 @@
         box-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
     }
 
-    // .player-progress-group {
-    //     width: 100%;
-    //     position: relative;
-    //     background-color: #e6e6e6;
+    .volume-group {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
 
-    //     .player-progress-point {
-    //         display: block;
-    //         position: absolute;
-    //         z-index: 1;
-    //         margin-top: -4px;
-    //         left: -1%;
-    //         width: 6px;
-    //         height: 6px;
-    //         border: 3px solid #1db954;
-    //         border-top-color: #1db954;
-    //         border-right-color: #1db954;
-    //         transform: rotate(45deg);
-    //         border-radius: 50%;
-    //         background-color: #e6e6e6;
-    //         box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
-    //         cursor: pointer;
-    //     }
+        .player-button-icon {
+            padding: 0 10px;
+            width: 30px;
+            height: 25px;
+            background-color: #292929;
+            color: #e6e6e6;
+        }
 
-    //     .player-progress-bar {
-    //         height: 0.3rem;
-    //         width: 0%;
-    //         background-color: #e6e6e6;
-    //         border-radius: 5px;
-    //         background-color: #1db954;
-    //     }
-    // }
+        .volume-bar {
+            width: 100%;
+            -webkit-appearance: none;
+            background-color: #e6e6e6;
+            height: 3px;
+            border-radius: 20px;
+            outline: none;
+            transition: background 2000ms ease-in;
+        }
+
+        .volume-bar::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 10px;
+            height: 10px;
+            border: 2px solid #1db954;
+            border-top-color: #1db954;
+            border-right-color: #1db954;
+            transform: rotate(45deg);
+            border-radius: 50%;
+            background-color: #e6e6e6;
+            box-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
+        }
+
+    }
 
     .player-button-group {
         display: flex;
@@ -73,12 +80,13 @@
             cursor: pointer;
 
             .player-button-icon {
-                width: 15px;
-                height: 15px;
-                background-color: #292929;
+                width: 20px;
+                height: 20px;
                 color: #e6e6e6;
             }
         }
+
+        button
 
         button:hover {
             .player-button-icon {
