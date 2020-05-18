@@ -18,7 +18,7 @@ const getFeaturedPlaylistFailed = (err) => ({
 export const getFeaturedPlaylist = () => (dispatch) => {
   dispatch(getFeaturedPlaylistStart());
   sendRequest
-    .get("browse/featured-playlists?limit=10")
+    .get("browse/featured-playlists?limit=20")
     .then((res) => {
       dispatch(getFeaturedPlaylistSuccess(res.data));
     })

@@ -41,23 +41,6 @@ const LeftContent = () => {
       <Title title="Browse Playlists" />
       <div className="button-group">
         <button
-          className="my-playlists-button"
-          onClick={() => setMyPlaylistOpen(!isMyPlaylistOpen)}
-        >
-          My Playlists
-          {isMyPlaylistOpen ? (
-            <FontAwesomeIcon
-              className="menu-icon-down"
-              icon={faArrowAltCircleDown}
-            />
-          ) : (
-            <FontAwesomeIcon
-              className="menu-icon-up"
-              icon={faArrowAltCircleUp}
-            />
-          )}
-        </button>
-        <button
           className="new-released-button"
           onClick={() => setNewReleasedOpen(!isNewReleasedOpen)}
         >
@@ -80,6 +63,23 @@ const LeftContent = () => {
         >
           Editor's Pick
           {isFeaturedListOpen ? (
+            <FontAwesomeIcon
+              className="menu-icon-down"
+              icon={faArrowAltCircleDown}
+            />
+          ) : (
+            <FontAwesomeIcon
+              className="menu-icon-up"
+              icon={faArrowAltCircleUp}
+            />
+          )}
+        </button>
+        <button
+          className="my-playlists-button"
+          onClick={() => setMyPlaylistOpen(!isMyPlaylistOpen)}
+        >
+          My Playlists
+          {isMyPlaylistOpen ? (
             <FontAwesomeIcon
               className="menu-icon-down"
               icon={faArrowAltCircleDown}

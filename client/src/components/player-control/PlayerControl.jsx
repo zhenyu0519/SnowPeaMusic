@@ -22,9 +22,15 @@ export const PlayerControl = ({ player, currentTrack, position, duration }) => {
     return player.togglePlay();
   };
   // previous track
-  const onPrevTrackClick = () => player.previousTrack();
+  const onPrevTrackClick = () => {
+    setisplaying(true);
+    return player.previousTrack();
+  };
   // next track
-  const onNextTrackClick = () => player.nextTrack();
+  const onNextTrackClick = () => {
+    setisplaying(true);
+    return player.nextTrack();
+  };
   // mute the track
   const toggleMuted = () => {
     setPreVolume(volume);

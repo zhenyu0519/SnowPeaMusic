@@ -4,14 +4,11 @@
     padding: 5px;
     display: flex;
     flex-direction: column;
-
-
+    
     .player-container {
+        margin-top: 25px;
         height: 500px;
         width: 100%;
         overflow: scroll;
-        border: white solid 1px;
     }
-
-    
 }

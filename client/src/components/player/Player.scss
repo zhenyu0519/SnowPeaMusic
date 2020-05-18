@@ -2,6 +2,36 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
     color: #e6e6e6;
+    height: 450px;
+
+    .album-cover {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        border: solid 5px #e6e6e6;
+        animation: rotation 8s infinite linear
+    }
+
+    @keyframes rotation {
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(359deg);
+        }
+    }
+
+    .track-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+
+        .track-name{
+            padding: 10px 0;
+            font-weight: bold;
+        }
+    }
 }

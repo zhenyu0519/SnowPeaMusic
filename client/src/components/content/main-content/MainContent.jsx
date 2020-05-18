@@ -26,6 +26,7 @@ class MainContent extends Component {
       currentTrack: null,
       duration: 0,
       position: 0,
+      paused: true,
     };
     this.playerCheckInterval = null;
   }
@@ -83,6 +84,7 @@ class MainContent extends Component {
     // Playback status updates
     player.on("player_state_changed", (state) => {
       this.setState({
+        paused: state.paused,
         duration: state.duration,
         position: state.position,
         currentTrack: state.track_window.current_track,
@@ -109,7 +111,7 @@ class MainContent extends Component {
   }
 
   render() {
-    const { currentTrack, player, duration, position } = this.state;
+    const { currentTrack, player, duration, position, paused } = this.state;
     return (
       <div className="main-content-container">
         <Title title="current playing..." />
@@ -120,6 +122,7 @@ class MainContent extends Component {
               albumName={currentTrack.album.name}
               trackName={currentTrack.name}
               artists={currentTrack.artists}
+              isPlaying={!paused}
             />
           ) : null}
         </div>
