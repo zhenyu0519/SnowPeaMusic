@@ -13,7 +13,6 @@ import {
 // utils
 import { getAccessToken } from "../../../utils/getAccessToken";
 // components
-import { Title } from "../../title/Title";
 import { Player } from "../../player/Player";
 import { PlayerControl } from "../../player-control/PlayerControl";
 

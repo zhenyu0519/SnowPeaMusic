@@ -27,7 +27,7 @@ const SearchBar = ({
       InitRender.current = false;
       return;
     }
-    getSearchItems(inputQuery);
+    if (inputQuery !== "") getSearchItems(inputQuery);
   }, [inputQuery, getSearchItems]);
 
   return (

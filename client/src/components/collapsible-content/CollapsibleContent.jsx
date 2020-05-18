@@ -3,6 +3,9 @@ import "./CollapsibleContent.scss";
 // redux
 import { connect } from "react-redux";
 import { playTrack } from "../../redux/play-track/playTrackActions";
+// font icon
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlayCircle } from "@fortawesome/free-regular-svg-icons";
 
 const CollapsibleContent = ({
   imageUrl,
@@ -19,6 +22,7 @@ const CollapsibleContent = ({
   return (
     <div className="collapsible-content-container" onClick={playTrackHandler}>
       <img src={imageUrl} alt={name} />
+      <FontAwesomeIcon className="play-icon" icon={faPlayCircle} />
       <div className="card">
         <div>{name}</div>
         {total ? <div>{`${total} tracks `}</div> : <div>{descrption}</div>}
