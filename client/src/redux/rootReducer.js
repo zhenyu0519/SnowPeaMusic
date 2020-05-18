@@ -8,6 +8,8 @@ import { newReleasedTracksReducer } from "./new-releases/newReleasedTracksReduce
 import { featuredPlaylistReducer } from "./featured-playlist/featuredPlaylistReducers";
 import { currentPlayingReducer } from "./current-playing/currentPlayingReducers";
 import { transferUserPlaybackReducer } from "./transfer-user-playback/transferUserPlaybackReducers";
+import { getPlayerReducer } from "./get-player/getPlayerReducers";
+import { playTrackReducer } from "./play-track/playTrackReducers";
 
 export const rootReducer = combineReducers({
   myProfile: myProfileReducer,
@@ -18,4 +20,6 @@ export const rootReducer = combineReducers({
   featuredPlaylist: featuredPlaylistReducer,
   currentPlaying: currentPlayingReducer,
   transferUserPlayback: transferUserPlaybackReducer,
+  getPlayer: getPlayerReducer,
+  playTrack: playTrackReducer,
 });

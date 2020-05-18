@@ -5,7 +5,17 @@
     width: 120px;
     box-shadow: 10px 15px 10px 2px rgba(0, 0, 0, 0.2);
     border-radius: 5px;
-    border: 1px #1c1c1c solid;
+    border: 2px #1c1c1c solid;
+    overflow: hidden;
+
+    &:hover {
+        cursor: pointer;
+        img {
+            transform: scale(1.2);
+            transition: transform 3s cubic-bezier(0.25, 0.45, 0.45, 0.95);
+        }
+
+    }
 
     img {
         height: 60%;

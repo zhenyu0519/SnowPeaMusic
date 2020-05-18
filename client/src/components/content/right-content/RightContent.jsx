@@ -12,7 +12,7 @@ import {
 // components
 import { Title } from "../../title/Title";
 import { LoadingSpinner } from "../../loading-spinner/LoadingSpinner";
-import { TrackCard } from "../../track-card/TrackCard";
+import TrackCard from "../../track-card/TrackCard";
 
 const RightContent = ({
   isLoading,
