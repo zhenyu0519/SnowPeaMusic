@@ -12,6 +12,7 @@ export const selectSearchItemsArtists = createSelector(
 export const selectSearchItemsTracks = createSelector(
   [selectSearchItems],
   (payload) => {
+    console.log('fuck',payload.searchedItems.tracks)
     return payload.searchedItems.tracks;
   }
 );

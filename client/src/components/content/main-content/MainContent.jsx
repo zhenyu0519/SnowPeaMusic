@@ -11,7 +11,7 @@ import {
   selectTransferUserPlaybackIsLoading,
 } from "../../../redux/transfer-user-playback/transferUserPlaybackSelectors";
 // utils
-import { getAccessToken } from "../../../utils/getAccessToken";
+import { getAccessToken, clearTokens } from "../../../utils/getAccessToken";
 // components
 import { Player } from "../../player/Player";
 import { PlayerControl } from "../../player-control/PlayerControl";
@@ -84,14 +84,20 @@ class MainContent extends Component {
 
     // Playback status updates
     player.on("player_state_changed", (state) => {
-      this.setState({
-        paused: state.paused,
-        duration: state.duration,
-        position: state.position,
-        currentTrack: state.track_window.current_track,
-        previousTrack: state.track_window.previous_tracks,
-        nextTracks: state.track_window.next_tracks,
-      });
+      console.log(state);
+      if (("state", state)) {
+        this.setState({
+          paused: state.paused,
+          duration: state.duration,
+          position: state.position,
+          currentTrack: state.track_window.current_track,
+          previousTrack: state.track_window.previous_tracks,
+          nextTracks: state.track_window.next_tracks,
+        });
+      } else {
+        clearTokens();
+        window.location.reload();
+      }
     });
 
     // Ready

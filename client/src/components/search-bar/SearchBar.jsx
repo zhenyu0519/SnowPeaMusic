@@ -31,13 +31,18 @@ const SearchBar = ({
   }, [inputQuery, getSearchItems]);
 
   return (
-    <input
-      type="text"
-      className="search-bar"
-      placeholder={`Looking For More Music? ${displayName}`}
-      onChange={(event) => setInputQuery(event.target.value)}
-      value={inputQuery}
-    />
+    <div className="search-bar-container">
+      <input
+        type="text"
+        className="search-bar"
+        placeholder={`Looking For More Music? ${displayName}`}
+        onChange={(event) => setInputQuery(event.target.value)}
+        value={inputQuery}
+      />
+      <ul className='search-results-container'>
+
+      </ul>
+    </div>
   );
 };
 
