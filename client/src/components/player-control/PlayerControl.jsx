@@ -9,8 +9,13 @@ import { faStepBackward } from "@fortawesome/free-solid-svg-icons";
 import { faVolumeUp } from "@fortawesome/free-solid-svg-icons";
 import { faVolumeMute } from "@fortawesome/free-solid-svg-icons";
 
-export const PlayerControl = ({ player, currentTrack, position, duration }) => {
-  const [isplaying, setisplaying] = useState(false);
+export const PlayerControl = ({
+  player,
+  currentTrack,
+  position,
+  duration,
+  isPlaying,
+}) => {
   const [currentPosition, setCurrentPosition] = useState(position);
   const [isMuted, setMuted] = useState(false);
   const [volume, setVolume] = useState("50");
@@ -18,17 +23,14 @@ export const PlayerControl = ({ player, currentTrack, position, duration }) => {
 
   // play or pause the track
   const onTogglePlayClick = () => {
-    setisplaying(!isplaying);
     return player.togglePlay();
   };
   // previous track
   const onPrevTrackClick = () => {
-    setisplaying(true);
     return player.previousTrack();
   };
   // next track
   const onNextTrackClick = () => {
-    setisplaying(true);
     return player.nextTrack();
   };
   // mute the track
@@ -44,12 +46,12 @@ export const PlayerControl = ({ player, currentTrack, position, duration }) => {
 
   // player thumb will update the current position every 0.5 seconds
   useEffect(() => {
-    if (!isplaying) return;
+    if (!isPlaying) return;
     const progress = setInterval(() => {
       setCurrentPosition(currentPosition + 500);
     }, 500);
     return () => clearInterval(progress);
-  }, [isplaying, currentPosition]);
+  }, [isPlaying, currentPosition]);
 
   // every time the position changed will be update, ex. next track, previous track or drag the track to expected position
   useEffect(() => {
@@ -109,7 +111,7 @@ export const PlayerControl = ({ player, currentTrack, position, duration }) => {
         >
           <FontAwesomeIcon
             className="player-button-icon"
-            icon={isplaying ? faPauseCircle : faPlayCircle}
+            icon={isPlaying ? faPauseCircle : faPlayCircle}
           />
         </button>
         <button className="next-button" onClick={() => onNextTrackClick()}>

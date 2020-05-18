@@ -114,7 +114,6 @@ class MainContent extends Component {
     const { currentTrack, player, duration, position, paused } = this.state;
     return (
       <div className="main-content-container">
-        <Title title="current playing..." />
         <div className="player-container">
           {currentTrack ? (
             <Player
@@ -132,6 +131,7 @@ class MainContent extends Component {
             currentTrack={currentTrack}
             position={position}
             duration={duration}
+            isPlaying={!paused}
           />
         ) : null}
       </div>

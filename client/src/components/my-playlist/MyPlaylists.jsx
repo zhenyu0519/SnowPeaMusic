@@ -11,7 +11,7 @@ import {
 } from "../../redux/my-playlist/myPlaylistsSelectors";
 // components
 import { LoadingSpinner } from "../loading-spinner/LoadingSpinner";
-import { CollapsibleContent } from "../collapsible-content/CollapsibleContent";
+import CollapsibleContent from "../collapsible-content/CollapsibleContent";
 
 const MyPlaylists = ({ isLoading, myPlaylists, getMyPlaylists, open }) => {
   useEffect(() => {
@@ -30,6 +30,7 @@ const MyPlaylists = ({ isLoading, myPlaylists, getMyPlaylists, open }) => {
               imageUrl={playlist.images[1].url}
               name={playlist.name}
               total={playlist.tracks.total}
+              contextUri={playlist.uri}
             />
           ))}
         </div>

@@ -11,7 +11,7 @@ import {
 } from "../../redux/new-releases/newReleasedTracksSelectors";
 // components
 import { LoadingSpinner } from "../loading-spinner/LoadingSpinner";
-import { CollapsibleContent } from "../collapsible-content/CollapsibleContent";
+import CollapsibleContent from "../collapsible-content/CollapsibleContent";
 
 const NewReleased = ({
   isLoading,
@@ -35,6 +35,7 @@ const NewReleased = ({
               imageUrl={track.images[1].url}
               name={track.name}
               total={track.total}
+              contextUri={track.uri}
             />
           ))}
         </div>

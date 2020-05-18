@@ -18,7 +18,7 @@ const getNewReleasedTracksFailed = (err) => ({
 export const getNewReleasedTracks = () => (dispatch) => {
   dispatch(getNewReleasedTracksStart());
   sendRequest
-    .get("browse/new-releases?limit=20")
+    .get("browse/new-releases?limit=30")
     .then((res) => {
       dispatch(getNewReleasedTracksSuccess(res.data));
     })

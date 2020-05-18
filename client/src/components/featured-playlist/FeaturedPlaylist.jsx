@@ -11,7 +11,7 @@ import {
 } from "../../redux/featured-playlist/featuredPlaylistSelectors";
 // components
 import { LoadingSpinner } from "../loading-spinner/LoadingSpinner";
-import { CollapsibleContent } from "../collapsible-content/CollapsibleContent";
+import CollapsibleContent from "../collapsible-content/CollapsibleContent";
 
 const FeaturedPlaylist = ({
   isLoading,
@@ -35,6 +35,7 @@ const FeaturedPlaylist = ({
               imageUrl={item.images[0].url}
               name={item.name}
               descrption={item.descrption}
+              contextUri={item.uri}
             />
           ))}
         </div>
