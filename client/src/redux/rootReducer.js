@@ -10,6 +10,7 @@ import { currentPlayingReducer } from "./current-playing/currentPlayingReducers"
 import { transferUserPlaybackReducer } from "./transfer-user-playback/transferUserPlaybackReducers";
 import { getPlayerReducer } from "./get-player/getPlayerReducers";
 import { playTrackReducer } from "./play-track/playTrackReducers";
+import { getTrackAnalysisReducer } from "./track-analysis/getTrackAnalysisReducers";
 
 export const rootReducer = combineReducers({
   myProfile: myProfileReducer,
@@ -22,4 +23,5 @@ export const rootReducer = combineReducers({
   transferUserPlayback: transferUserPlaybackReducer,
   getPlayer: getPlayerReducer,
   playTrack: playTrackReducer,
+  getTrackAnalysis: getTrackAnalysisReducer,
 });
