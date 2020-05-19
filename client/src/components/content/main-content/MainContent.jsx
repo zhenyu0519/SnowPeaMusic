@@ -84,8 +84,7 @@ class MainContent extends Component {
 
     // Playback status updates
     player.on("player_state_changed", (state) => {
-      console.log(state);
-      if (("state", state)) {
+      if (state) {
         this.setState({
           paused: state.paused,
           duration: state.duration,

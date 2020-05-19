@@ -1,0 +1,22 @@
+.result-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 90%;
+    cursor: pointer;
+    margin: 5px 0;
+    border-radius: 20px;
+
+    &:hover{
+        background-color: #1db954;
+    }
+
+    img{
+        width: 32px;
+        height: 32px;
+    }
+    .track-name{
+        padding: 0 10px;
+    }
+
+}

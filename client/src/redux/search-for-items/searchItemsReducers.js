@@ -1,7 +1,7 @@
 import { searchItemsTypes } from "./searchItemsTypes";
 const INITIAL_STATE = {
   searchedItems: [],
-  isLoading: true,
+  isLoading: false,
   error: null,
 };
 

@@ -18,7 +18,7 @@ export const getSearchItemsFailed = (error) => ({
 export const getSearchItems = (query) => (dispatch) => {
   dispatch(getSearchItemsStart());
   sendRequest
-    .get(`search?q=${query}&type=track&market=CA&limit=15`)
+    .get(`search?q=${query}&type=track&market=CA&limit=50`)
     .then((res) => {
       dispatch(getSearchItemsSuccess(res.data));
     })

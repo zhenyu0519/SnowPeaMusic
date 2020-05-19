@@ -7,13 +7,15 @@ import { getSearchItems } from "../../redux/search-for-items/searchItemsActions"
 // reselect & selectors
 import { createStructuredSelector } from "reselect";
 import {
-  selectSearchItemsArtists,
   selectSearchItemsTracks,
   selectSearchItemsIsLoading,
 } from "../../redux/search-for-items/searchItemsSelectors";
+// components
+import { LoadingSpinner } from "../loading-spinner/LoadingSpinner";
+import SearchResult from "../search-result/SearchResult";
+
 const SearchBar = ({
   displayName,
-  searchItemsArtists,
   selectItemsTracks,
   searchItemsIsLoading,
   getSearchItems,
@@ -39,15 +41,27 @@ const SearchBar = ({
         onChange={(event) => setInputQuery(event.target.value)}
         value={inputQuery}
       />
-      <ul className='search-results-container'>
-
-      </ul>
+      {selectItemsTracks && inputQuery ? (
+        <div className="search-results-container">
+          {selectItemsTracks.map((track, index) => (
+            <SearchResult
+              key={index}
+              trackName={track.name}
+              artists={track.artists}
+              imageUrl={track.album.images[2].url}
+              contextUri={track.album.uri}
+              setInput={setInputQuery}
+            />
+          ))}
+        </div>
+      ) : inputQuery ? (
+        <LoadingSpinner />
+      ) : null}
     </div>
   );
 };
 
 const mapStateToProps = createStructuredSelector({
-  searchItemsArtists: selectSearchItemsArtists,
   selectItemsTracks: selectSearchItemsTracks,
   searchItemsIsLoading: selectSearchItemsIsLoading,
 });
