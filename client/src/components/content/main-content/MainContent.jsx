@@ -16,6 +16,7 @@ import { getAccessToken, clearTokens } from "../../../utils/getAccessToken";
 // components
 import { Player } from "../../player/Player";
 import { PlayerControl } from "../../player-control/PlayerControl";
+import { Title } from "../../title/Title";
 
 class MainContent extends Component {
   constructor(props) {
@@ -126,6 +127,7 @@ class MainContent extends Component {
     } = this.state;
     return (
       <div className="main-content-container">
+        <Title title={`Welcome, ${this.props.loginedUser.display_name}`} />
         <div className="player-container">
           {currentTrack ? (
             <Player
@@ -139,9 +141,7 @@ class MainContent extends Component {
                   ? previousTracks[previousTracks.length - 1]
                   : currentTrack
               }
-              nextTrack={
-                nextTracks.length ? nextTracks[0] : currentTrack
-              }
+              nextTrack={nextTracks.length ? nextTracks[0] : currentTrack}
             />
           ) : null}
         </div>

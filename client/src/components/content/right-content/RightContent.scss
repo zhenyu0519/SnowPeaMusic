@@ -1,14 +1,14 @@
 .right-content-container {
     flex: 15%;
     background-color: #292929;
-    padding: 5px;
+    padding: 15px 5px;
     display: flex;
     flex-direction: column;
     opacity: 0.85;
 
     .history-container {
-        margin-top: 10px;
-        height: 550px;
+        margin-top: 20px;
+        height: 580px;
         display: grid;
         width: 100%;
         grid-template-columns: auto auto;

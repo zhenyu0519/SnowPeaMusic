@@ -1,14 +1,14 @@
 .main-content-container {
     flex: 70%;
     background-color: #292929;
-    padding: 5px;
+    padding: 10px;
     display: flex;
     flex-direction: column;
-    opacity: 0.85;
+    opacity: 0.8;
     
     .player-container {
         margin-top: 25px;
-        height: 500px;
+        height: 480px;
         width: 100%;
         overflow: scroll;
     }

@@ -29,7 +29,7 @@ const HomePage = ({ getMyProfile, loginedUser, isLoading }) => {
       <Header loginedUser={loginedUser} />
       <div className="content-container">
         <LeftContent />
-        <MainContent />
+        <MainContent loginedUser={loginedUser} />
         <RightContent />
       </div>
     </div>

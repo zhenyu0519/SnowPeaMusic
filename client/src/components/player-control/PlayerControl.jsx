@@ -146,13 +146,14 @@ export const PlayerControl = ({
                 className="volume-bar"
                 type="range"
                 value={volume}
-                min="0"
+                min="1"
                 max="100"
                 onChange={(event) => dragTheVolumeBar(event)}
                 style={{
                   background: `linear-gradient(to right, #e6e6e6 0%, #1db954 ${volume}%, #e6e6e6  ${volume}%, #e6e6e6 100%)`,
                 }}
               />
+              <div className="current-volume"> {volume} </div>
             </React.Fragment>
           ) : (
             <React.Fragment>
