@@ -38,8 +38,12 @@ const SearchBar = ({
         type="text"
         className="search-bar"
         placeholder={`Looking For More Music? ${displayName}`}
-        onChange={(event) => setInputQuery(event.target.value)}
+        onChange={(e) => setInputQuery(e.target.value)}
         value={inputQuery}
+        onFocus={(e) => (e.target.placeholder = "")}
+        onBlur={(e) =>
+          (e.target.placeholder = `Looking For More Music? ${displayName}`)
+        }
       />
       {selectItemsTracks && inputQuery ? (
         <div className="search-results-container">

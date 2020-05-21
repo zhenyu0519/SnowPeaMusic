@@ -2,6 +2,10 @@ import React from "react";
 import "./Player.scss";
 // components
 import { Title } from "../title/Title";
+// font awesome
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 export const Player = ({
   imageUrl,
@@ -16,15 +20,19 @@ export const Player = ({
     <div className="track-container">
       <div className="previous-track-group">
         <img
-          src={prevTrack.images[0].url}
+          src={prevTrack.album.images[0].url}
           alt={prevTrack.name}
           className="prev-album-cover"
+          style={{ animationPlayState: isPlaying ? "running" : "paused" }}
         />
         <div className="track-info">
           <Title title={prevTrack.name} h4 />
         </div>
       </div>
-
+      <div>
+        Prev
+        <FontAwesomeIcon icon={faArrowLeft} />
+      </div>
       <div className="current-track-group">
         <img
           src={imageUrl}
@@ -43,12 +51,16 @@ export const Player = ({
           </div>
         </div>
       </div>
-
+      <div>
+        Next
+        <FontAwesomeIcon icon={faArrowRight} />
+      </div>
       <div className="next-track-group">
         <img
-          src={nextTrack.images[0].url}
+          src={nextTrack.album.images[0].url}
           alt={nextTrack.name}
           className="next-album-cover"
+          style={{ animationPlayState: isPlaying ? "running" : "paused" }}
         />
         <div className="track-info">
           <Title title={nextTrack.name} h4 />

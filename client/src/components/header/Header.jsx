@@ -9,6 +9,9 @@ import { ReactComponent as Logo } from "../../assets/logo.svg";
 import { getAccessToken, clearTokens } from "../../utils/getAccessToken";
 import { Avatar } from "../avatar/Avatar";
 import SearchBar from "../search-bar/SearchBar";
+// fontawesome
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 
 const Header = ({ history, loginedUser }) => {
   useEffect(() => {
@@ -32,7 +35,10 @@ const Header = ({ history, loginedUser }) => {
           imageUrl={loginedUser.images[0].url}
           alt={loginedUser.display_name}
         />
-        <button onClick={signOut}>Sign out</button>
+        <button onClick={signOut}>
+          <FontAwesomeIcon icon={faSignOutAlt} style={{padding: '0 10px'}}/>
+          Sign out
+        </button>
       </div>
     </div>
   );
