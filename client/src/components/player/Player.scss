@@ -1,39 +1,111 @@
-
-.current-track-container {
+.track-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
     color: #e6e6e6;
     height: 450px;
 
-    .album-cover {
-        width: 200px;
-        height: 200px;
-        border-radius: 50%;
-        border: solid 5px #e6e6e6;
-        box-shadow: 10px 15px 10px 2px rgba(0, 0, 0, 0.2);
-        animation: rotation 8s infinite linear;
-    }
-
-    @keyframes rotation {
-        from {
-            transform: rotate(0deg);
-        }
-
-        to {
-            transform: rotate(359deg);
-        }
-    }
-
-    .track-info {
+    .previous-track-group {
         display: flex;
+        flex: 25%;
         flex-direction: column;
-        justify-content: space-around;
+        align-items: center;
 
-        .track-name{
-            padding: 10px 0;
-            font-weight: bold;
+        .prev-album-cover {
+            width: 75px;
+            height: 75px;
+            border-radius: 50%;
+            border: solid 5px #292929;
+            box-shadow: 0px 15px 10px 2px rgba(0, 0, 0, 0.2);
+            animation: rotationReverse 6s infinite linear;
+        }
+
+        @keyframes rotationReverse {
+            from {
+                transform: rotate(359deg);
+            }
+
+            to {
+                transform: rotate(0deg);
+            }
+        }
+
+        .track-info {
+            height: 70px;
+            width: 50%;
+            overflow: scroll;
+        }
+    }
+
+    .next-track-group {
+        display: flex;
+        flex:25%;
+        flex-direction: column;
+        align-items: center;
+
+        .next-album-cover {
+            width: 75px;
+            height: 75px;
+            border-radius: 50%;
+            border: solid 5px #292929;
+            box-shadow: 0px 15px 10px 2px rgba(0, 0, 0, 0.2);
+            animation: rotationReverse 6s infinite linear;
+        }
+
+        .track-info {
+            height: 70px;
+            width: 50%;
+            overflow: scroll;
+        }
+
+        @keyframes rotationReverse {
+            from {
+                transform: rotate(359deg);
+            }
+
+            to {
+                transform: rotate(0deg);
+            }
+        }
+    }
+
+    .current-track-group {
+        display: flex;
+        flex:50%;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+
+        .album-cover {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: solid 5px #e6e6e6;
+            box-shadow: 10px 15px 10px 2px rgba(0, 0, 0, 0.2);
+            animation: rotation 8s infinite linear;
+        }
+
+        @keyframes rotation {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(359deg);
+            }
+        }
+
+        .track-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 50%;
+
+            .track-name {
+                padding: 10px 0;
+                font-weight: bold;
+            }
         }
     }
 }

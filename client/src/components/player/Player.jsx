@@ -9,14 +9,19 @@ export const Player = ({
   trackName,
   artists,
   isPlaying,
+  prevTrack,
+  nextTrack,
 }) => {
   return (
-    <div className="current-track-container">
-
+    <div className="track-container">
       <div className="previous-track-group">
-        <img src={imageUrl} alt={albumName} className="prev-album-cover" />
+        <img
+          src={prevTrack.images[0].url}
+          alt={prevTrack.name}
+          className="prev-album-cover"
+        />
         <div className="track-info">
-          <Title title={`${trackName}`} />
+          <Title title={prevTrack.name} h4 />
         </div>
       </div>
 
@@ -40,12 +45,15 @@ export const Player = ({
       </div>
 
       <div className="next-track-group">
-        <img src={imageUrl} alt={albumName} className="next-album-cover" />
+        <img
+          src={nextTrack.images[0].url}
+          alt={nextTrack.name}
+          className="next-album-cover"
+        />
         <div className="track-info">
-          <Title title={`${trackName}`} />
+          <Title title={nextTrack.name} h4 />
         </div>
       </div>
-
     </div>
   );
 };

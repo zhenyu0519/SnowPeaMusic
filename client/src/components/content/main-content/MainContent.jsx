@@ -134,6 +134,12 @@ class MainContent extends Component {
               trackName={currentTrack.name}
               artists={currentTrack.artists}
               isPlaying={!paused}
+              prevTrack={
+                previousTracks
+                  ? previousTracks[previousTracks.length - 1].album
+                  : null
+              }
+              nextTrack={nextTracks ? nextTracks[0].album : null}
             />
           ) : null}
         </div>
