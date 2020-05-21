@@ -1,11 +1,12 @@
 .left-content-container {
-    flex: 10%;
+    flex: 15%;
     background-color: #292929;
     padding: 5px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    opacity: 0.85;
 
     .button-group {
         margin-top: 10px;

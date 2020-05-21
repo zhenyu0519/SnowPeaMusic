@@ -1,9 +1,8 @@
 .header-container {
-    height: 20%;
+    height: 15%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 15px;
 
     .logo-container {
         padding: 15px;
@@ -35,8 +34,9 @@
             color: #e6e6e6;
             font-size: 15px;
             font-weight: bold;
-            border: 1px solid #e6e6e6;
+            border: 2px solid #e6e6e6;
             border-radius: 10px;
+            opacity: 0.85;
         }
 
         button:hover {

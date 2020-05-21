@@ -1,9 +1,10 @@
 .right-content-container {
-    flex: 10%;
+    flex: 15%;
     background-color: #292929;
     padding: 5px;
     display: flex;
     flex-direction: column;
+    opacity: 0.85;
 
     .history-container {
         margin-top: 10px;

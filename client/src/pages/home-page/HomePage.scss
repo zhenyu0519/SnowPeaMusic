@@ -1,11 +1,17 @@
 .home-container {
-    background-color: #292929;
+    height: 100vh;
     display: flex;
     flex-direction: column;
+    padding: 0 20px;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab, #1db954);
+    background-size: 100% 100%;
 
     .content-container {
         display: flex;
         text-align: center;
+        border: 3px solid #e6e6e6;
+        border-radius: 20px;
+        overflow: hidden;
     }
 
 }

@@ -1,9 +1,10 @@
 .main-content-container {
-    flex: 65%;
+    flex: 70%;
     background-color: #292929;
     padding: 5px;
     display: flex;
     flex-direction: column;
+    opacity: 0.85;
     
     .player-container {
         margin-top: 25px;
