@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./PlayerControl.scss";
+import { millisToMinutesAndSeconds } from "../../utils/millisToMinutesAndSeconds";
 // font awesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlayCircle } from "@fortawesome/free-regular-svg-icons";
@@ -20,6 +21,7 @@ export const PlayerControl = ({
   const [isMuted, setMuted] = useState(false);
   const [volume, setVolume] = useState("50");
   const [preVolume, setPreVolume] = useState("50");
+  const [currentTime, setCurrentTime] = useState("0:00");
 
   // play or pause the track
   const onTogglePlayClick = () => {
@@ -29,6 +31,7 @@ export const PlayerControl = ({
   const onPrevTrackClick = () => {
     return player.previousTrack();
   };
+
   // next track
   const onNextTrackClick = () => {
     return player.nextTrack();
@@ -44,18 +47,21 @@ export const PlayerControl = ({
     setMuted(!isMuted);
   };
 
-  // player thumb will update the current position every 0.5 seconds
+  // player thumb will update the current position every 1 second
   useEffect(() => {
     if (!isPlaying) return;
     const progress = setInterval(() => {
-      setCurrentPosition(currentPosition + 500);
-    }, 500);
+      setCurrentPosition(currentPosition + 1000);
+      // update current positoion to minute and seconds every 1 second
+      setCurrentTime(millisToMinutesAndSeconds(currentPosition));
+    }, 1000);
     return () => clearInterval(progress);
   }, [isPlaying, currentPosition]);
 
   // every time the position changed will be update, ex. next track, previous track or drag the track to expected position
   useEffect(() => {
     setCurrentPosition(position);
+    setCurrentTime(millisToMinutesAndSeconds(position));
   }, [position, duration]);
 
   // get the converted current position (string)
@@ -87,17 +93,21 @@ export const PlayerControl = ({
 
   return (
     <div className="player-control-container">
-      <input
-        className="draggable-progress-bar"
-        type="range"
-        value={getPosition()}
-        min="0"
-        max={duration.toString()}
-        onChange={(event) => dragTheProgressBar(event)}
-        style={{
-          background: `linear-gradient(to right, #e6e6e6 0%, #1db954 ${getRatio()}%, #e6e6e6  ${getRatio()}%, #e6e6e6 100%)`,
-        }}
-      />
+      <div className="draggable-progress-bar-group">
+        <div className="current-position">{currentTime}</div>
+        <input
+          className="draggable-progress-bar"
+          type="range"
+          value={getPosition()}
+          min="0"
+          max={duration.toString()}
+          onChange={(event) => dragTheProgressBar(event)}
+          style={{
+            background: `linear-gradient(to right, #e6e6e6 0%, #1db954 ${getRatio()}%, #e6e6e6  ${getRatio()}%, #e6e6e6 100%)`,
+          }}
+        />
+        <div className="duration">{millisToMinutesAndSeconds(duration)}</div>
+      </div>
       <div className="player-button-group">
         <button className="pre-button" onClick={() => onPrevTrackClick()}>
           <FontAwesomeIcon
@@ -110,7 +120,7 @@ export const PlayerControl = ({
           onClick={() => onTogglePlayClick()}
         >
           <FontAwesomeIcon
-            className="player-button-icon"
+            className="play-pause-icon"
             icon={isPlaying ? faPauseCircle : faPlayCircle}
           />
         </button>

@@ -4,6 +4,7 @@ import "./MainContent.scss";
 import { connect } from "react-redux";
 import { transferUserPlayback } from "../../../redux/transfer-user-playback/transferUserPlaybackActions";
 import { getPlayer } from "../../../redux/get-player/getPlayerActions";
+import { getTrackAnalysis } from "../../../redux/track-analysis/getTrackAnalysisActions";
 // reselect & selecotrs
 import { createStructuredSelector } from "reselect";
 import {
@@ -59,7 +60,6 @@ class MainContent extends Component {
       // Connect to Web Playback SDK instance to Spotify with the credentials provided during initialization.
       this.state.player.connect().then((success) => {
         if (success) {
-          // this.props.getPlayer(this.state.player);
           console.log(
             "The Web Playback SDK successfully connected to Spotify!"
           );
@@ -84,13 +84,14 @@ class MainContent extends Component {
 
     // Playback status updates
     player.on("player_state_changed", (state) => {
-      if (state) {
+      if (state && state.track_window) {
+        // this.props.getTrackAnalysis(state.track_window.current_track.id)
         this.setState({
           paused: state.paused,
           duration: state.duration,
           position: state.position,
           currentTrack: state.track_window.current_track,
-          previousTrack: state.track_window.previous_tracks,
+          previousTracks: state.track_window.previous_tracks,
           nextTracks: state.track_window.next_tracks,
         });
       } else {
@@ -102,7 +103,6 @@ class MainContent extends Component {
     // Ready
     player.on("ready", (data) => {
       let { device_id } = data;
-      localStorage.setItem("device_id", device_id);
       this.props.transferUserPlayback(device_id);
       this.setState({ deviceId: device_id });
     });
@@ -115,7 +115,15 @@ class MainContent extends Component {
   }
 
   render() {
-    const { currentTrack, player, duration, position, paused } = this.state;
+    const {
+      currentTrack,
+      player,
+      duration,
+      position,
+      paused,
+      previousTracks,
+      nextTracks,
+    } = this.state;
     return (
       <div className="main-content-container">
         <div className="player-container">
@@ -151,5 +159,6 @@ const mapStateToProps = createStructuredSelector({
 const mapDispatchToProps = (dispatch) => ({
   transferUserPlayback: (deviceId) => dispatch(transferUserPlayback(deviceId)),
   getPlayer: (player) => dispatch(getPlayer(player)),
+  getTrackAnalysis: (spotifyId) => dispatch(getTrackAnalysis(spotifyId)),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(MainContent);

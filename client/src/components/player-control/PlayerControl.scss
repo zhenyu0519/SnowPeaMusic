@@ -2,31 +2,42 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 65px;
+    height: 80px;
     padding: 0px 100px;
 
-    .draggable-progress-bar {
-        width: 100%;
-        -webkit-appearance: none;
-        background-color: #e6e6e6;
-        height: 6px;
-        border-radius: 30px;
-        outline: none;
-        transition: background 1000ms ease-in;
+    .draggable-progress-bar-group {
+        height: 30px;
+        display: flex;
+        flex-direction: row;
+        color: #1db954;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 30px;
+
+        .draggable-progress-bar {
+            width: 90%;
+            -webkit-appearance: none;
+            background-color: #e6e6e6;
+            height: 6px;
+            border-radius: 30px;
+            outline: none;
+            transition: background 1000ms ease-in;
+        }
+
+        .draggable-progress-bar::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 15px;
+            height: 15px;
+            border: 4px solid #1db954;
+            border-top-color: #1db954;
+            border-right-color: #1db954;
+            transform: rotate(45deg);
+            border-radius: 50%;
+            background-color: #e6e6e6;
+            box-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
+        }
     }
 
-    .draggable-progress-bar::-webkit-slider-thumb {
-        -webkit-appearance: none;
-        width: 15px;
-        height: 15px;
-        border: 4px solid #1db954;
-        border-top-color: #1db954;
-        border-right-color: #1db954;
-        transform: rotate(45deg);
-        border-radius: 50%;
-        background-color: #e6e6e6;
-        box-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
-    }
 
     .volume-group {
         display: flex;
@@ -85,11 +96,15 @@
                 height: 20px;
                 color: #e6e6e6;
             }
+
+            .play-pause-icon {
+                width: 35px;
+                height: 35px;
+                color: #1db954;
+            }
         }
 
-        button
-
-        button:hover {
+        button button:hover {
             .player-button-icon {
                 color: #1db954
             }

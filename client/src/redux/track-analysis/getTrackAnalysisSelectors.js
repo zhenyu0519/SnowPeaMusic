@@ -13,5 +13,7 @@ export const selectGetTrackAnalysisIsLoading = createSelector(
 
 export const selectGetTrackAnalysisData = createSelector(
   [selectGetTrackAnalysis],
-  (payload) => payload.data
+  (payload) => {
+    return payload.data;
+  }
 );

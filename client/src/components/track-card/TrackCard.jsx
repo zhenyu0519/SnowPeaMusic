@@ -1,14 +1,13 @@
 import React from "react";
 import "./TrackCard.scss";
-// // reselect & selectors
-// import { createStructuredSelector } from "reselect";
-// import { selectGetPlayer } from "../../redux/get-player/getPlayerSelectors";
 // redux
 import { connect } from "react-redux";
 import { playTrack } from "../../redux/play-track/playTrackActions";
 // font icon
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlayCircle } from "@fortawesome/free-regular-svg-icons";
+// components
+import { Title } from "../title/Title";
 
 const TrackCard = ({ album, artists, name, playTrack }) => {
   const deviceId = localStorage.getItem("device_id");
@@ -21,7 +20,8 @@ const TrackCard = ({ album, artists, name, playTrack }) => {
       <img src={album.images[0].url} alt={name} />
       <FontAwesomeIcon className="play-icon" icon={faPlayCircle} />
       <div className="card">
-        <div className="track-name">{name}</div>
+        <Title title={name} />
+        {/* <div className="track-name">{name}</div> */}
         <div className="track-artists">
           {artists.map((artist, index) => {
             return index === artists.length - 1

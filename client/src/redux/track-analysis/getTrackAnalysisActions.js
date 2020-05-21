@@ -5,8 +5,9 @@ const getTrackAnalysisStart = () => ({
   type: getTrackAnalysisActionTypes.GET_TRACK_ANALYSIS_START,
 });
 
-const getTrackAnalysisSuccess = () => ({
+const getTrackAnalysisSuccess = (data) => ({
   type: getTrackAnalysisActionTypes.GET_TRACK_ANALYSIS_SUCCESS,
+  payload: data,
 });
 
 const getTrackAnalysisFailed = (err) => ({
@@ -17,9 +18,9 @@ const getTrackAnalysisFailed = (err) => ({
 export const getTrackAnalysis = (spotifyId) => (dispatch) => {
   dispatch(getTrackAnalysisStart());
   sendRequest
-    .put(`audio-analysis/${spotifyId}`)
-    .then(() => {
-      dispatch(getTrackAnalysisSuccess());
+    .get(`audio-analysis/${spotifyId}`)
+    .then((res) => {
+      dispatch(getTrackAnalysisSuccess(res.data));
     })
     .catch((err) => {
       dispatch(getTrackAnalysisFailed(err));
