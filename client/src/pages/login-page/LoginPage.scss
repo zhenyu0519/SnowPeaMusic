@@ -41,6 +41,7 @@
             height: 50px;
             width: 50px;
             border-radius: 50%;
+            animation: login-logo 2s linear infinite;
         }
     }
 
@@ -61,4 +62,13 @@
             background-color: #1db954;
         }
     }
+    @keyframes login-logo {
+      0% {
+          transform: rotate(0deg);
+      }
+  
+      100% {
+          transform: rotate(360deg);
+      }
+  }
 }

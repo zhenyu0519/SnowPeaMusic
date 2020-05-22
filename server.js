@@ -2,6 +2,8 @@
 const express = require("express");
 // http request tools
 const axios = require("axios");
+// path
+const path = require("path");
 // middlewares
 const cors = require("cors");
 const querystring = require("querystring");
@@ -20,6 +22,8 @@ const stateKey = process.env.STATE_KEY;
 
 // create server
 const app = express();
+
+app.use(express.static(path.join(__dirname, "client", "build")));
 
 app.use(cors()).use(cookieParser());
 

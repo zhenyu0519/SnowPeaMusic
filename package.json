@@ -1,6 +1,10 @@
 {
   "name": "snowpeamusic",
   "version": "1.0.0",
+  "engines": {
+    "node": "10.18.x",
+    "npm": "6.x"
+  },
   "description": "Snow Pea Music based on the Spotify Music",
   "main": "server.js",
   "scripts": {
@@ -8,18 +12,19 @@
     "start": "cross-env NODE_ENV=development node server.js",
     "server": "cross-env NODE_ENV=development nodemon server.js",
     "client": "npm start --prefix client",
+    "build": "npm run build --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zhenyu0519/DiveMusic.git"
+    "url": "git+https://github.com/zhenyu0519/SnowPeaMusic.git"
   },
   "author": "Jeffrey",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/zhenyu0519/DiveMusic/issues"
+    "url": "https://github.com/zhenyu0519/SnowPeaMusic/issues"
   },
-  "homepage": "https://github.com/zhenyu0519/DiveMusic#readme",
+  "homepage": "https://github.com/zhenyu0519/SnowPeaMusic#readme",
   "dependencies": {
     "axios": "^0.19.2",
     "body-parser": "^1.19.0",
