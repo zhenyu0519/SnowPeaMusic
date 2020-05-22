@@ -2,11 +2,11 @@
   "name": "divemusic",
   "version": "1.0.0",
   "description": "Dive The music ocean",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "cross-env NODE_ENV=development node index.js",
-    "server": "cross-env NODE_ENV=development nodemon index.js",
+    "start": "cross-env NODE_ENV=development node server.js",
+    "server": "cross-env NODE_ENV=development nodemon server.js",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
