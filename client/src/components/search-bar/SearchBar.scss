@@ -31,17 +31,18 @@
     }
 
     .search-results-container {
-        width: 100%;
         height: 300px;
         display: flex;
         flex-direction: column;
         align-items: center;
         background-color: #292929;
-        opacity: 0.9;
+        opacity: 0.8;
         color: #e6e6e6;
         overflow: scroll;
+        scrollbar-width: none;
         z-index:3;
-        padding: 1rem;
+        padding: 5px;
+        border-radius: 5px;
     }
 
 

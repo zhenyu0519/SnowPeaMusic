@@ -37,6 +37,7 @@
             height: 70px;
             width: 50%;
             overflow: scroll;
+            scrollbar-width: none;
         }
     }
 
@@ -59,6 +60,7 @@
             height: 70px;
             width: 50%;
             overflow: scroll;
+            scrollbar-width: none;
         }
 
         @keyframes rotationReverse {

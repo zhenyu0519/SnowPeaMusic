@@ -2,7 +2,8 @@ body {
   font-family: "Patrick Hand", cursive;
   font-weight: bold;
   background-color: #292929;
-  overflow: hidden
+  overflow: hidden;
+  scrollbar-width: none;
 }
 
 button,

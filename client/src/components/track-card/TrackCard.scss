@@ -31,7 +31,6 @@
             font-size: 40px;
             transition: 1s;
         }
-
     }
 
     img {
@@ -48,6 +47,7 @@
         font-size: 12px;
         color: #e6e6e6;
         overflow: scroll;
+        scrollbar-width: none;
     }
 
 
