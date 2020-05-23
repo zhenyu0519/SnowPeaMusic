@@ -63,8 +63,10 @@ app.get("/callback", function (req, res) {
   // no state
   if (state === null || state !== storedState) {
     res.redirect(
-      "http://localhost:3000/#" +
-        querystring.stringify({ error: "state_mismatch" })
+      process.env.NODE_ENV !== "production"
+        ? "http://localhost:3000/#"
+        : "https://snowpea.herokuapp.com/#" +
+            querystring.stringify({ error: "state_mismatch" })
     );
   } else {
     res.clearCookie(stateKey);
@@ -88,14 +90,18 @@ app.get("/callback", function (req, res) {
         const access_token = response.data.access_token;
         const refresh_token = response.data.refresh_token;
         res.redirect(
-          "http://localhost:3000/login/#" +
-            querystring.stringify({ access_token, refresh_token })
+          process.env.NODE_ENV !== "production"
+            ? "http://localhost:3000/login/#"
+            : "https://snowpea.herokuapp.com/login/#" +
+                querystring.stringify({ access_token, refresh_token })
         );
       })
       .catch((e) => {
         res.redirect(
-          "http://localhost:3000/login/#" +
-            querystring.stringify({ error: e.response.data })
+          process.env.NODE_ENV !== "production"
+            ? "http://localhost:3000/login/#"
+            : "https://snowpea.herokuapp.com/login/#" +
+                querystring.stringify({ error: e.response.data })
         );
       });
   }
