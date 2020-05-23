@@ -34,15 +34,6 @@ const REDIRECT_URI =
 // create server
 const app = express();
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "client", "build")));
-  app.use(compression());
-
-  app.get("*", function (req, res) {
-    res.sendFile(path.join(__dirname, "client/build", "index.html"));
-  });
-}
-
 app.use(cors()).use(cookieParser());
 
 // get login request
@@ -137,6 +128,15 @@ app.get("/refresh_token", function (req, res) {
       console.error(e.response.data);
     });
 });
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "client", "build")));
+  app.use(compression());
+
+  app.get("*", function (req, res) {
+    res.sendFile(path.join(__dirname, "client/build", "index.html"));
+  });
+}
 
 console.log(`Server is Listening on ${process.env.PORT}`);
 app.listen(process.env.PORT);
