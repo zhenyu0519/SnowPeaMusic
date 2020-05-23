@@ -25,7 +25,6 @@ const stateKey = process.env.STATE_KEY;
 // create server
 const app = express();
 
-// if production
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "client", "build")));
   app.use(compression());
