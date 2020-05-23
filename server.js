@@ -4,6 +4,8 @@ const express = require("express");
 const axios = require("axios");
 // path
 const path = require("path");
+// compression
+const compression = require("compression");
 // middlewares
 const cors = require("cors");
 const querystring = require("querystring");
@@ -12,7 +14,7 @@ const cookieParser = require("cookie-parser");
 const generateRandomString = require("./utils/generateRandomString");
 
 // config dotenv
-require("dotenv").config();
+if (process.env.NODE_ENV !== "production") require("dotenv").config();
 
 // client credentials
 const client_id = process.env.CLIENT_ID; // Your client id
@@ -23,7 +25,10 @@ const stateKey = process.env.STATE_KEY;
 // create server
 const app = express();
 
-app.use(express.static(path.join(__dirname, "client", "build")));
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "client", "build")));
+  app.use(compression());
+}
 
 app.use(cors()).use(cookieParser());
 
