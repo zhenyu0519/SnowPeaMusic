@@ -17,6 +17,7 @@ import { getAccessToken, clearTokens } from "../../../utils/getAccessToken";
 import { Player } from "../../player/Player";
 import { PlayerControl } from "../../player-control/PlayerControl";
 import { Title } from "../../title/Title";
+import defaultBG from "../../../assets/record_bg.jpg";
 
 class MainContent extends Component {
   constructor(props) {
@@ -131,7 +132,12 @@ class MainContent extends Component {
         <div className="player-container">
           {currentTrack ? (
             <Player
-              imageUrl={currentTrack.album.images[0].url}
+              imageUrl={
+                currentTrack.album.images &&
+                currentTrack.album.images.length > 0
+                  ? currentTrack.album.images[0].url
+                  : defaultBG
+              }
               albumName={currentTrack.album.name}
               trackName={currentTrack.name}
               artists={currentTrack.artists}
@@ -143,7 +149,13 @@ class MainContent extends Component {
               }
               nextTrack={nextTracks.length ? nextTracks[0] : currentTrack}
             />
-          ) : null}
+          ) : (
+            <img
+              src={defaultBG}
+              alt='default'
+              className="default-album-cover"
+            />
+          )}
         </div>
         {player ? (
           <PlayerControl

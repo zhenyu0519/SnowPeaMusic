@@ -12,6 +12,8 @@ import SearchBar from "../search-bar/SearchBar";
 // fontawesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
+// defaultProfileImage
+import defaultProfileImage from "../../assets/default_profile_image.png";
 
 const Header = ({ history, loginedUser }) => {
   useEffect(() => {
@@ -32,11 +34,15 @@ const Header = ({ history, loginedUser }) => {
       <div className="options-container">
         <SearchBar displayName={loginedUser.display_name} />
         <Avatar
-          imageUrl={loginedUser.images[0].url}
+          imageUrl={
+            loginedUser.images && loginedUser.images.length > 0
+              ? loginedUser.images[0].url
+              : defaultProfileImage
+          }
           alt={loginedUser.display_name}
         />
         <button onClick={signOut}>
-          <FontAwesomeIcon icon={faSignOutAlt} style={{padding: '0 10px'}}/>
+          <FontAwesomeIcon icon={faSignOutAlt} style={{ padding: "0 10px" }} />
           Sign out
         </button>
       </div>

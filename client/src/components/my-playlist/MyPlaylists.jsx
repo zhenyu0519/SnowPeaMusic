@@ -12,6 +12,7 @@ import {
 // components
 import { LoadingSpinner } from "../loading-spinner/LoadingSpinner";
 import CollapsibleContent from "../collapsible-content/CollapsibleContent";
+import defaultBG from "../../assets/record_bg.jpg";
 
 const MyPlaylists = ({ isLoading, myPlaylists, getMyPlaylists, open }) => {
   useEffect(() => {
@@ -27,7 +28,11 @@ const MyPlaylists = ({ isLoading, myPlaylists, getMyPlaylists, open }) => {
           {myPlaylists.map((playlist) => (
             <CollapsibleContent
               key={playlist.id}
-              imageUrl={playlist.images[1].url}
+              imageUrl={
+                playlist.images && playlist.images.length > 0
+                  ? playlist.images[0].url
+                  : defaultBG
+              }
               name={playlist.name}
               total={playlist.tracks.total}
               contextUri={playlist.uri}

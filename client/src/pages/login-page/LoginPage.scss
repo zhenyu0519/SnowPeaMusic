@@ -20,9 +20,13 @@
       }
     }
 
+    p{
+      font-size: 15px;
+    }
+
     .login-button {
-        height: 150px;
-        width: 150px;
+        height: 200px;
+        width: 200px;
         border: solid black 8px;
         border-radius: 45%;
         background-color: #1db954;
@@ -37,27 +41,27 @@
         transition: 0.2s;
 
         .logo {
-            margin-bottom: 5px;
-            height: 50px;
-            width: 50px;
+            padding: 15px;
+            height: 60px;
+            width: 60px;
             border-radius: 50%;
             animation: login-logo 2s linear infinite;
         }
     }
 
     .login-button:hover {
-        height: 140px;
-        width: 140px;
+        height: 220px;
+        width: 220px;
         border: solid black 8px;
-        font-size: 22px;
+        font-size: 25px;
         background-color: #e6e6e6;
         color: #292929;
         cursor: pointer;
         text-shadow: 1px 1px #1db954;
 
         .logo {
-            height: 45px;
-            width: 45px;
+            height: 70px;
+            width: 70px;
             border-radius: 50%;
             background-color: #1db954;
         }

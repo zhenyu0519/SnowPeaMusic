@@ -12,6 +12,7 @@ const LoginPage = () => {
       <a href={LOGIN_URI} className="login-button">
         <Logo className="logo" />
         Login With Spotify
+        <p>Premium Member Only</p>
       </a>
     </div>
   );

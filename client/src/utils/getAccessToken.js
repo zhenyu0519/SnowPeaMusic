@@ -28,9 +28,13 @@ const getLocalRefreshToken = () =>
   window.localStorage.getItem("spotify_refresh_token");
 
 async function refreshAccessToken() {
+  const URL =
+    process.env.NODE_ENV !== "production"
+      ? "http://localhost:8000"
+      : "https://snowpea.herokuapp.com";
   try {
     const { data } = await axios.get(
-      `/refresh_token?refresh_token=${getLocalRefreshToken()}`
+      `${URL}/refresh_token?refresh_token=${getLocalRefreshToken()}`
     );
     const { access_token } = data;
     setLocalAccessToken(access_token);
