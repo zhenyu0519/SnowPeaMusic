@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "proxy": "http://localhost:8000",
+  "homepage": "https://snowpea.herokuapp.com",
   "engines": {
     "node": "10.18.x",
     "npm": "6.x"
