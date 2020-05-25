@@ -16,8 +16,6 @@
 
 ## Table of Contents (Optional)
 
-- [Snow Pea Music](#snow-pea-music)
-  - [Table of Contents (Optional)](#table-of-contents-optional)
   - [About](#about)
   - [Production](#production)
   - [Open Sourced](#open-sourced)
@@ -25,7 +23,7 @@
   - [Install](#install)
   - [Preview](#preview)
   - [Donations (Optional)](#donations-optional)
-  - [License](#license)
+  - [License & Copyright](#licensecopyright)
 
 ---
 
@@ -80,9 +78,11 @@ If this project help you reduce time to develop, you can buy me a cup of coffee 
 <img alt="" border="0" src="https://www.paypal.com/en_CA/i/scr/pixel.gif" width="1" height="1" />
 </form>
 
+<!-- [![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=A8YE92K9QM7NA) -->
+
 
 ---
-## License
+## License & Copyright
 
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
 
