@@ -1,4 +1,4 @@
-<a href="https://snowpea.herokuapp.com/"><img src="https://github.com/zhenyu0519/SnowPeaMusic/blob/master/client/public/logo-192x192.png" title="Snow Pea Music" alt="Snow Pea Music"></a>
+<a href="https://snowpea.herokuapp.com/"><img src="https://github.com/zhenyu0519/SnowPeaMusic/blob/master/client/public/logo-64x64.png" title="Snow Pea Music" alt="Snow Pea Music"></a>
 
 # Snow Pea Music 
 
