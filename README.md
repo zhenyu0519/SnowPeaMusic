@@ -21,8 +21,9 @@
   - [Open Sourced](#open-sourced)
   - [Before Start](#before-start)
   - [Install](#install)
+  - [Start](#start)
   - [Preview](#preview)
-  - [License & Copyright](#license-copyright)
+  - [License & Copyright](#license-&-copyright)
 
 ---
 
@@ -57,6 +58,12 @@
   ```
   **Do not explore your client id and client secred!!!**
 
+## Start
+  To run on local server, navigate to root directory
+  ```
+  npm run dev
+  ```
+
 ## Preview
 ![demo](https://github.com/zhenyu0519/SnowPeaMusic/blob/master/client/public/demo.gif)
 
@@ -66,9 +73,9 @@
 > The website has already deploied on Heroku. Due the free server ( Dyno ), there are some constrains such as the server will put the website if it dose not receive any traffic in 1 hour. So when you access the web, you might need to wait about 15 ~ 20 seconds to wake it up.
 
 ---
-## License Copyright
+## License & Copyright
 
-[![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
+![](https://img.shields.io/github/license/zhenyu0519/SnowPeaMusic?style=flat-square)
 
 - **[MIT license](http://opensource.org/licenses/mit-license.php)**
 - Copyright 2020 © <a href="https://github.com/zhenyu0519/SnowPeaMusic" target="_blank">Jeffrey Zhang</a>.
