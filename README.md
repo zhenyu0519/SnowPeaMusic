@@ -70,7 +70,7 @@
 ---
 
 ## Production
-> The website has already deploied on Heroku. Due the free server ( Dyno ), there are some constrains such as the server will put the website if it dose not receive any traffic in 1 hour. So when you access the web, you might need to wait about 15 ~ 20 seconds to wake it up.
+> The website has already deploied on Heroku. Due the free server ( Dyno ), there are some constrains such as the server will put the website into sleep if it dose not receive any traffic in 1 hour. So when you access the web, you might need to wait about 15 ~ 20 seconds to wake it up.
 
 ---
 ## License & Copyright
