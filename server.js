@@ -63,7 +63,6 @@ app.get("/callback", function (req, res) {
   let code = req.query.code || null;
   let state = req.query.state || null;
   let storedState = req.cookies ? req.cookies[stateKey] : null;
-  console.log(state, storedState)
   // no state
   if (state === null || state !== storedState) {
     res.redirect("/#" + querystring.stringify({ error: "state_mismatch" }));

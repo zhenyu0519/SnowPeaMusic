@@ -11,7 +11,6 @@ export const selectCurrentPlayingTrack = createSelector(
   [selectCurrentPlaying],
   (payload) => {
     if (payload.currentPlaying) {
-      console.log('here',payload.currentPlaying)
       return payload.currentPlaying.item;
     }
   }
