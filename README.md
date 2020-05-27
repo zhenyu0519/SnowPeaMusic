@@ -31,7 +31,7 @@
  > Snow Pea is a mini music player based on the Spotify SDK and API. The player allow you to login with your Spotify account ( Premium membership required ) and play music under your recent played library. It also allow you to play editor's picks and new released albums. If these are not enough, you can always find your favourite tracks, albums and singers by searching with key words. All data are real and from Spotify Open APIs.
 
 ## Open Sourced
-> The project is open sourced and it is not for commercial use! It won't charge anything. However, the Spotify premium account is required to ensure you have fully access of all functionilites.
+> The project is open sourced and it is not for commercial use. The app won't charge anything, however, the Spotify premium account is required to ensure you have fully access of all functionilites.
 
 ## Before Start 
 * Spotify premium membership required for SDK ( [sign up here](https://www.spotify.com/us/premium/) )
@@ -45,10 +45,12 @@
   ```
   npm install
   ```
+  
   Install frontend dependences, navigate to **client** folder then
   ```
   npm install
   ```
+  
   Create .env file under root folder, copy paste the content below and replace client id and secret with your own, save.
   ```
   PORT=8000
@@ -56,7 +58,7 @@
   CLIENT_SECRET="REPLACE_YOUR_CLIENT_SECRET_HERE"
   STATE_KEY="spotify_auth_state"  
   ```
-  **Do not explore your client id and client secred!!!**
+  **Do not explore your client id and client secret!!!**
 
 ## Start
   To run on local server, navigate to root directory
